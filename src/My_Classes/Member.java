@@ -93,7 +93,63 @@ public class Member {
     public void setEmail(String email) {
         this.email = email;
     }
+public void addMember(String _fname, String _lname, String phone, String email, String gender, byte[] picture) {
+        String insertQuery = "INSERT INTO `members`(`firstName`, `lastName`, `phone`, `email`, `gender`, `picture`) VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
+            ps.setString(1, _fname);
+            ps.setString(2, _lname);
+            ps.setString(3, phone);
+            ps.setString(4, email);
+             ps.setString(5, gender);
+              ps.setBytes(6, picture);
+            if (ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Member Added", "add Member", 1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Member Not Added", "add Member", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+    }
+public void editMember(Integer id, String _fname, String _lname, String phone, String email, String gender, byte[] picture) {
+        String editQuery = "UPDATE `member` SET `firstname` = ?, `lastname` = ?, `phone` = ?, `email` = ?, `gender` = ?, `picture` = ? WHERE `id` = ?";
+        try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(editQuery);
+            ps.setString(1, _fname);
+            ps.setString(2, _lname);
+            ps.setString(3, phone);
+            ps.setString(4, email);
+             ps.setString(5, gender);
+             ps.setBytes(6, picture);
+             ps.setInt(7, id);
+            if (ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Member Edited", "edit member", 1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Member Not Edited", "edit member", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+    }
+ public void removeMember(int _id) {
+        String removeQuery = "DELETE FROM `member` WHERE `id` = ?";
+        try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(removeQuery);
+            ps.setInt(1, _id);
+            if (ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Member Deleted", "remove", 1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Member Not Deleted", "remove", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
 }
 
