@@ -54,7 +54,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jTextField_FirstName" alignment="0" max="32767" attributes="0"/>
                       <Component id="jTextField_LastName" max="32767" attributes="0"/>
-                      <Component id="jTextField_About" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jTextArea_About" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -79,7 +79,7 @@
                           </Group>
                           <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jTextField_ExpertiseName" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextField_Expertise" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="406" max="-2" attributes="0"/>
@@ -120,11 +120,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" pref="38" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField_ExpertiseName" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jTextField_Expertise" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="43" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField_About" pref="159" max="32767" attributes="0"/>
+                          <Component id="jTextArea_About" pref="159" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="JButton_Delete_" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
@@ -304,14 +304,14 @@
             <Property name="text" type="java.lang.String" value="Last Name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_About">
+        <Component class="javax.swing.JTextField" name="jTextArea_About">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Verdana" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_AboutActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextArea_AboutActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -322,14 +322,14 @@
             <Property name="text" type="java.lang.String" value="Expertise:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_ExpertiseName">
+        <Component class="javax.swing.JTextField" name="jTextField_Expertise">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Verdana" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_ExpertiseNameActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_ExpertiseActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

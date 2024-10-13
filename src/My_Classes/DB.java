@@ -7,13 +7,13 @@ package My_Classes;
 
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Admin
  */
 public class DB {
@@ -22,24 +22,24 @@ public class DB {
     private static String dbName = "java_library_system";
     private static Integer portNumber = 3306;
     private static String pass = "";
-    
+
     public static Connection getConnection() {
-    Connection connection = null;
+        Connection connection = null;
 
-    MysqlDataSource datasource = new MysqlDataSource();
+        MysqlDataSource datasource = new MysqlDataSource();
 
-    datasource.setServerName(serverName);
-    datasource.setUser(userName);
-    datasource.setDatabaseName(dbName);
-    datasource.setPortNumber(portNumber);
-    datasource.setPassword(pass);
+        datasource.setServerName(serverName);
+        datasource.setUser(userName);
+        datasource.setDatabaseName(dbName);
+        datasource.setPortNumber(portNumber);
+        datasource.setPassword(pass);
         try {
             connection = datasource.getConnection(); // Create the connection
         } catch (SQLException ex) {
             Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
         }
-   
-    return connection;
-}
+
+        return connection;
+    }
 
 }
