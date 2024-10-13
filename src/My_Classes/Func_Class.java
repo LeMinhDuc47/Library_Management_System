@@ -6,6 +6,7 @@
 package My_Classes;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +21,7 @@ import javax.swing.JTable;
  * @author Admin
  */
 public class Func_Class {
+
     public void displayImage(int width, int height, String imagePath, JLabel label) {
         ImageIcon imgIco = new ImageIcon(getClass().getResource(imagePath));
         Image image = imgIco.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
@@ -39,8 +41,11 @@ public class Func_Class {
 
     }
 
-    public void customTable(JTable table, Color back_Color, Interger fontSize) {
-
+    public void customTableHeader(JTable table, Color back_Color, Integer fontSize) {
+        table.getTableHeader().setBackground(back_Color);    // Background color of the header
+        table.getTableHeader().setForeground(Color.white);   // Text color of the header
+        table.getTableHeader().setFont(new Font("Verdana", Font.BOLD, fontSize));   // Font style of the header
+        table.getTableHeader().setOpaque(false);
     }
 
     public ResultSet getData(String query) {
@@ -57,4 +62,3 @@ public class Func_Class {
         return rs;
     }
 }
-                                                                                        
