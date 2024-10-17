@@ -44,7 +44,7 @@ public class AddMemberForm extends javax.swing.JFrame {
         Border panelHeaderBorder = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray);
         jPanel1.setBorder(panelHeaderBorder);
         My_Classes.Func_Class func = new My_Classes.Func_Class();
-        func.displayImage(75, 60, "/My_Images/note.jpg", jLabel_FormTitle);
+         func.displayImage(75, 60,null, "/Images/member.png", jLabel_FormTitle);
 
         jLabel_EmptyPhone_.setVisible(false);
         jLabel_EmptyLastName_.setVisible(false);

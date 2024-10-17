@@ -35,7 +35,7 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         Border panelHeaderBorder = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray);
         jPanel1.setBorder(panelHeaderBorder);
         My_Classes.Func_Class func = new My_Classes.Func_Class();
-        func.displayImage(75, 60, "/My_Images/note.jpg", jLabel_FormTitle);
+        func.displayImage(75, 60, null ,"/My_Images/note.jpg", jLabel_FormTitle);
         func.customTable(jTable_Authors_);
 
         func.customTableHeader(jTable_Authors_, new Color(34, 167, 240), 16);

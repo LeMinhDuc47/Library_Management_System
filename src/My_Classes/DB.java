@@ -5,7 +5,6 @@
  */
 package My_Classes;
 
-
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import java.sql.Connection;
@@ -43,3 +42,4 @@ public class DB {
     }
 
 }
+

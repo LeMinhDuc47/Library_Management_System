@@ -8,25 +8,48 @@ package My_Classes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * @author Admin
  */
 public class Func_Class {
-
-    public void displayImage(int width, int height, String imagePath, JLabel label) {
-        ImageIcon imgIco = new ImageIcon(getClass().getResource(imagePath));
+ public void displayImage(int width, int height, byte[] imagebyte, String imagePath, JLabel label)
+    {
+        ImageIcon imgIco;
+        // get the image
+        if(imagebyte !=null)//get image using bytes
+        {
+            imgIco = new ImageIcon(imagebyte);
+        }
+        else    //get image using path
+        {
+            try {
+                //get image from the project resource
+                imgIco = new ImageIcon(getClass().getResource(imagePath));
+  
+            } catch (Exception e) 
+            {
+                //get icon from the desktop
+                imgIco = new ImageIcon((imagePath));
+            }
+        }
+        
+        // make the image fit the jlabel
         Image image = imgIco.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        
+        // set the image into the jlabel
         label.setIcon(new ImageIcon(image));
-
     }
 
     public void customTable(JTable table) {
@@ -60,5 +83,23 @@ public class Func_Class {
         }
 
         return rs;
+    }
+        public String selectImage(){
+        // select picture from the computer
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select Profile Picture");
+        
+        fileChooser.setCurrentDirectory(new File("F:\\Image"));
+        
+        FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image", ".png", ".jpg", ".jpeg");
+        fileChooser.addChoosableFileFilter(extensionFilter);
+        
+        int fileState = fileChooser.showSaveDialog(null);
+        String path="";
+        if(fileState == JFileChooser.APPROVE_OPTION)
+        {
+            path = fileChooser.getSelectedFile().getAbsolutePath();
+        }
+        return path;
     }
 }

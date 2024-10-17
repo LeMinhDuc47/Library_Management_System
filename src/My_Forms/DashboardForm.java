@@ -9,11 +9,9 @@ import My_Classes.Func_Class;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.Border;
 
@@ -31,7 +29,7 @@ public class DashboardForm extends javax.swing.JFrame {
     public DashboardForm() {
         initComponents();
         this.setLocationRelativeTo(null);
-        func.displayImage(jLabel_Dashboard_Logo.getWidth(), jLabel_Dashboard_Logo.getHeight(), "/My_Images/book_dash_logo.jpg", jLabel_Dashboard_Logo);
+        func.displayImage(jLabel_Dashboard_Logo.getWidth(), jLabel_Dashboard_Logo.getHeight(), null, "/My_Images/book_dash_logo.jpg", jLabel_Dashboard_Logo);
         Border panelHeaderBorder = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white);
         jPanel_Header.setBorder(panelHeaderBorder);
         Border panelHeader_1_Border = BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(235, 125, 22));

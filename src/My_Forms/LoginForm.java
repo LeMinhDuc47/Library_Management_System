@@ -28,9 +28,9 @@ public class LoginForm extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         My_Classes.Func_Class func = new My_Classes.Func_Class();
-        func.displayImage(jLabel_Logo.getWidth(), jLabel_Logo.getHeight(), "/My_Images/UET-logo-full-ten.png", jLabel_Logo);
-        func.displayImage(jLabel1.getWidth(), jLabel1.getHeight(), "/My_Images/bg.png", jLabel1);
-        func.displayImage(jLabel4.getWidth(), jLabel4.getHeight(), "/My_Images/login.png", jLabel4);
+        func.displayImage(jLabel_Logo.getWidth(), jLabel_Logo.getHeight(),null ,"/My_Images/UET-logo-full-ten.png", jLabel_Logo);
+        func.displayImage(jLabel1.getWidth(), jLabel1.getHeight(), null, "/My_Images/bg.png", jLabel1);
+        func.displayImage(jLabel4.getWidth(), jLabel4.getHeight(), null, "/My_Images/login.png", jLabel4);
     }
 
     /**
