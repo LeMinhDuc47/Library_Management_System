@@ -93,7 +93,8 @@ public class Member {
     public void setEmail(String email) {
         this.email = email;
     }
-public void addMember(String _fname, String _lname, String phone, String email, String gender, byte[] picture) {
+
+    public void addMember(String _fname, String _lname, String phone, String email, String gender, byte[] picture) {
         String insertQuery = "INSERT INTO `members`(`firstName`, `lastName`, `phone`, `email`, `gender`, `picture`) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
@@ -101,8 +102,8 @@ public void addMember(String _fname, String _lname, String phone, String email, 
             ps.setString(2, _lname);
             ps.setString(3, phone);
             ps.setString(4, email);
-             ps.setString(5, gender);
-              ps.setBytes(6, picture);
+            ps.setString(5, gender);
+            ps.setBytes(6, picture);
             if (ps.executeUpdate() != 0) {
                 JOptionPane.showMessageDialog(null, "Member Added", "add Member", 1);
             } else {
@@ -113,7 +114,8 @@ public void addMember(String _fname, String _lname, String phone, String email, 
         }
 
     }
-public void editMember(Integer id, String _fname, String _lname, String phone, String email, String gender, byte[] picture) {
+
+    public void editMember(Integer id, String _fname, String _lname, String phone, String email, String gender, byte[] picture) {
         String editQuery = "UPDATE `member` SET `firstname` = ?, `lastname` = ?, `phone` = ?, `email` = ?, `gender` = ?, `picture` = ? WHERE `id` = ?";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(editQuery);
@@ -121,9 +123,9 @@ public void editMember(Integer id, String _fname, String _lname, String phone, S
             ps.setString(2, _lname);
             ps.setString(3, phone);
             ps.setString(4, email);
-             ps.setString(5, gender);
-             ps.setBytes(6, picture);
-             ps.setInt(7, id);
+            ps.setString(5, gender);
+            ps.setBytes(6, picture);
+            ps.setInt(7, id);
             if (ps.executeUpdate() != 0) {
                 JOptionPane.showMessageDialog(null, "Member Edited", "edit member", 1);
             } else {
@@ -132,10 +134,11 @@ public void editMember(Integer id, String _fname, String _lname, String phone, S
         } catch (SQLException ex) {
             Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 
     }
- public void removeMember(int _id) {
+
+    public void removeMember(int _id) {
         String removeQuery = "DELETE FROM `member` WHERE `id` = ?";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(removeQuery);
