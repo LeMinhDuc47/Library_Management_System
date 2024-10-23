@@ -1,7 +1,7 @@
 package My_Forms;
 
 import Classes.Func_Class;
-import My_Forms.BookInfoCardForm;
+import Forms.BorrowBookForm;
 import Forms.MemberInfoCardForm;
 import java.awt.Color;
 import java.awt.HeadlessException;
@@ -531,15 +531,15 @@ public class IssueBookForm extends javax.swing.JFrame {
         return true;
     }
 
-//    public static void main(String args[]) {
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                new BorrowBookForm().setVisible(true);
-//            }
-//        });
-//    }
+  public static void main(String args[]) {
+      /* Create and display the form */
+      java.awt.EventQueue.invokeLater(new Runnable() {
+           @Override
+            public void run() {
+             new BorrowBookForm().setVisible(true);
+            }
+       });
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Borrow_;

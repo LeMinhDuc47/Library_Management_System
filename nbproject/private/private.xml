@@ -11,6 +11,11 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Classes/DB.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/AddMemberForm.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Classes/Func_Class.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/ManageAuthorsForm.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Classes/Users.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/ManageUsersForm.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/BookListForm.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/MemberInfoCardForm.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/EditMemberForm.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/MemberListForm.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Classes/Author.java</file>
@@ -18,8 +23,10 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Classes/Book.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/DeleteBookForm.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/IssueBookForm.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/ReturnBookForm.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Forms/DeleteMemberForm.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Classes/Genre.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Library_Management_System/src/My_Classes/Issue_Book.java</file>
         </group>
     </open-files>
 </project-private>
