@@ -17,9 +17,8 @@ public class Member {
     private String email;
     private String gender;
     private byte[] picture;
-    
-    public Member(int _id, String _fname, String _lname, String _phone, String _email, String _gender, byte[] _picture)
-    {
+
+    public Member(int _id, String _fname, String _lname, String _phone, String _email, String _gender, byte[] _picture) {
         this.id = _id;
         this.firstName = _fname;
         this.lastName = _lname;
@@ -28,8 +27,11 @@ public class Member {
         this.gender = _gender;
         this.picture = _picture;
     }
-    
-    public Member() {};
+
+    public Member() {
+    }
+
+    ;
 
     public void setId(int id) {
         this.id = id;
@@ -86,43 +88,38 @@ public class Member {
     public byte[] getPicture() {
         return picture;
     }
-    
+
     // function
-    
+
     // insert a new member function
-    public void addMember (String _fname, String _lname, String _phone, String _email, String _gender, byte[] _pic)
-    {
+    public void addMember(String _fname, String _lname, String _phone, String _email, String _gender, byte[] _pic) {
         String insertQuery = "INSERT INTO `members`(`firstName`, `lastName`, `phone`, `email`, `gender`, `picture`) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
-            
+
             ps.setString(1, _fname);
             ps.setString(2, _lname);
             ps.setString(3, _phone);
             ps.setString(4, _email);
             ps.setString(5, _gender);
             ps.setBytes(6, _pic);
-            
-            if(ps.executeUpdate() != 0)
-            {
-                JOptionPane.showMessageDialog(null, "Member Added","add member", 1);
-            }
-            else
-            {             
-                JOptionPane.showMessageDialog(null, "Member Not Added","add member", 2);          
+
+            if (ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Member Added", "add member", 1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Member Not Added", "add member", 2);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
-        }       
+        }
     }
-    
+
     // edit member by id function
-    public void editMember(Integer _id, String _fname, String _lname, String _phone, String _email, String _gender, byte[] _pic)
-    {
+    public void editMember(Integer _id, String _fname, String _lname, String _phone, String _email, String _gender, byte[] _pic) {
         String editQuery = "UPDATE `members` SET `firstName`=?,`lastName`=?,`phone`=?,`email`=?,`gender`=?,`picture`=? WHERE `id` =?";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(editQuery);
-            
+
             ps.setString(1, _fname);
             ps.setString(2, _lname);
             ps.setString(3, _phone);
@@ -130,82 +127,71 @@ public class Member {
             ps.setString(5, _gender);
             ps.setBytes(6, _pic);
             ps.setInt(7, _id);
-            
-            if(ps.executeUpdate() != 0)
-            {
-                JOptionPane.showMessageDialog(null, "Member Edited","edit member", 1);
-            }
-            else
-            {             
-                JOptionPane.showMessageDialog(null, "Member Not Edited","edit member", 2);          
+
+            if (ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Member Edited", "edit member", 1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Member Not Edited", "edit member", 2);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
-        }       
+        }
     }
-    
+
     // remove member by id function
-    public void removeMember(int _id)
-    {
+    public void removeMember(int _id) {
         String removeQuery = "DELETE FROM `members` WHERE `id` = ?";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(removeQuery);
             ps.setInt(1, _id);
-            
-            if(ps.executeUpdate() != 0)
-            {
-                JOptionPane.showMessageDialog(null, "Member Deleted","remove", 1);
-            }
-            else
-            {             
-                JOptionPane.showMessageDialog(null, "Member Not Deleted","remove", 2);          
+
+            if (ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Member Deleted", "remove", 1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Member Not Deleted", "remove", 2);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
-        }       
+        }
     }
-    
+
     //get member by id
-    public Member getMemberById(Integer _id) throws SQLException
-    {
+    public Member getMemberById(Integer _id) throws SQLException {
         Func_Class func = new Func_Class();
-        String query="SELECT * FROM `members` WHERE `id`="+_id;
+        String query = "SELECT * FROM `members` WHERE `id`=" + _id;
         ResultSet rs = func.getData(query);
-        if(rs.next())
-        {
-            return new Member(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5), rs.getString("gender"),rs.getBytes(7));
-        }
-        else{
-            
-            return null; 
+        if (rs.next()) {
+            return new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString("gender"), rs.getBytes(7));
+        } else {
+
+            return null;
         }
     }
-       // function to populate an arrayList with members
-    public ArrayList<Member> membersList(String query)
-    {
+
+    // function to populate an arrayList with members
+    public ArrayList<Member> membersList(String query) {
         ArrayList<Member> mList = new ArrayList<>();
         My_Classes.Func_Class func = new My_Classes.Func_Class();
-               
+
         try {
             if (query.equals("")) // if the user enter empty string make this the default select
             {
                 query = "SELECT * FROM `members`";
             }
-            
-            ResultSet rs = func.getData(query);                   
+
+            ResultSet rs = func.getData(query);
             Member member;
-            
-            while(rs.next())
-            {
-                member = new Member(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("phone"), rs.getString("email"), rs.getString("gender"),rs.getBytes("picture"));
+
+            while (rs.next()) {
+                member = new Member(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("phone"), rs.getString("email"), rs.getString("gender"), rs.getBytes("picture"));
                 mList.add(member);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return mList;
     }
 
-    
+
 }

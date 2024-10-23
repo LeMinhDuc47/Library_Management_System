@@ -1,8 +1,9 @@
 package My_Forms;
 
-import Classes.Func_Class;
-import Forms.BorrowBookForm;
-import Forms.MemberInfoCardForm;
+import My_Classes.Func_Class;
+import My_Forms.IssueBookForm;
+import My_Forms.MemberInfoCardForm;
+
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
@@ -34,12 +35,12 @@ public class IssueBookForm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         // add border to the panel [108,122,137]
-        Border panelHeaderBorder = BorderFactory.createMatteBorder(3,3,3,3,new Color(108,122,137));
+        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(108, 122, 137));
         jPanel1.setBorder(panelHeaderBorder);
 
         // display image in the top
-        Func_Class func = new Classes.Func_Class();
-        func.displayImage(80, 60,null, "/Images/organizer.png", jLabel_FormTitle);
+        Func_Class func = new My_Classes.Func_Class();
+        func.displayImage(80, 60, null, "/Images/organizer.png", jLabel_FormTitle);
 
 
         //add a white border in the bottom of the book name and member full name jLabel
@@ -168,9 +169,11 @@ public class IssueBookForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel_BookName_MouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel_BookName_MouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLabel_BookName_MouseExited(evt);
             }
@@ -188,9 +191,11 @@ public class IssueBookForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel_MemberFullName_MouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel_MemberFullName_MouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLabel_MemberFullName_MouseExited(evt);
             }
@@ -363,8 +368,8 @@ public class IssueBookForm extends javax.swing.JFrame {
         int _member_id = (int) jSpinner_MemberID.getValue();
         String _note = jTextArea_Note.getText();
 
-        SimpleDateFormat dateFormat =new SimpleDateFormat("YYYY-MM-dd");
-        try{
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        try {
             String _borrow_date = dateFormat.format(jDateChooser_BorrowDate.getDate());
             String _return_date = dateFormat.format(jDateChooser_ReturnDate.getDate());
 
@@ -373,20 +378,17 @@ public class IssueBookForm extends javax.swing.JFrame {
             Date returnDate = dateFormat.parse(_return_date);
 
             //Check if the book and member exists
-            if(!book_Exist){ //If the book doesn't exist
-                JOptionPane.showMessageDialog(null,"You need to check if this Book exist first by clicking the Search Book button","Check if the Book exist", 2);
-            }
-            else if(!member_Exist){ //If the member doesn't exist
-                JOptionPane.showMessageDialog(null,"You need to check if this Member exist first by clicking the Search Member button","Check if the Member exist", 2);
+            if (!book_Exist) { //If the book doesn't exist
+                JOptionPane.showMessageDialog(null, "You need to check if this Book exist first by clicking the Search Book button", "Check if the Book exist", 2);
+            } else if (!member_Exist) { //If the member doesn't exist
+                JOptionPane.showMessageDialog(null, "You need to check if this Member exist first by clicking the Search Member button", "Check if the Member exist", 2);
             }
             //Check if the book is available
-            else if(!borrow.checkBookAvailability(_book_id)){
-                JOptionPane.showMessageDialog(null,"This book is not available right now","Book is not available", 2);
-            }
-            else if(returnDate.before(borrowDate)){ //If the borrow date is after the return date
-                JOptionPane.showMessageDialog(null,"The Return date must be after the Borrow date","Wrong Return Date", 2);
-            }
-            else{
+            else if (!borrow.checkBookAvailability(_book_id)) {
+                JOptionPane.showMessageDialog(null, "This book is not available right now", "Book is not available", 2);
+            } else if (returnDate.before(borrowDate)) { //If the borrow date is after the return date
+                JOptionPane.showMessageDialog(null, "The Return date must be after the Borrow date", "Wrong Return Date", 2);
+            } else {
                 borrow.addBorrow(_book_id, _member_id, "borrowed", _borrow_date, _return_date, _note);
                 //reset field
                 jSpinner_BookID.setValue(0);
@@ -394,16 +396,15 @@ public class IssueBookForm extends javax.swing.JFrame {
                 jLabel_BookName_.setText("Book name");
                 jLabel_MemberFullName_.setText("Member Full-Name");
                 jLabel_Available.setText("Yes-or-No");
-                jLabel_Available.setForeground(new Color(51,102,255));
+                jLabel_Available.setForeground(new Color(51, 102, 255));
                 jDateChooser_BorrowDate.setDate(new Date());
                 jDateChooser_ReturnDate.setDate(new Date());
                 book_Exist = false;
                 member_Exist = false;
             }
 
-        }
-        catch (HeadlessException | NullPointerException| ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Select Borrow date & Return date","Select Date", 2);
+        } catch (HeadlessException | NullPointerException | ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Select Borrow date & Return date", "Select Date", 2);
         }
 
     }//GEN-LAST:event_jButton_Borrow_ActionPerformed
@@ -420,35 +421,33 @@ public class IssueBookForm extends javax.swing.JFrame {
     private void jButton_search_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_search_bookActionPerformed
 
         //get the book id
-        int book_id = (int)jSpinner_BookID.getValue();
+        int book_id = (int) jSpinner_BookID.getValue();
 
         try {
             //get the book by id
             My_Classes.Book selectedBook = book.getBookById(book_id);
-            if(selectedBook != null){ //if this book exist
+            if (selectedBook != null) { //if this book exist
                 //display this book title/name
                 jLabel_BookName_.setText(selectedBook.getName());
                 //set the book_exist to true
                 book_Exist = true;
 
                 //display availability
-                if(borrow.checkBookAvailability(book_id)){
+                if (borrow.checkBookAvailability(book_id)) {
                     jLabel_Available.setText("Yes");
                     jLabel_Available.setForeground(Color.green);
 
-                }
-                else{
+                } else {
                     jLabel_Available.setText("No");
                     jLabel_Available.setForeground(Color.red);
                 }
 
-            }
-            else{  //if this book doesn't exist
-                JOptionPane.showMessageDialog(null, "This book doesn't exist","Book not found", 2);
+            } else {  //if this book doesn't exist
+                JOptionPane.showMessageDialog(null, "This book doesn't exist", "Book not found", 2);
                 jLabel_BookName_.setText("Book name");
                 book_Exist = false;
                 jLabel_Available.setText("Yes-or-No");
-                jLabel_Available.setForeground(new Color(51,102,255));
+                jLabel_Available.setForeground(new Color(51, 102, 255));
             }
         } catch (SQLException ex) {
             Logger.getLogger(IssueBookForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -461,19 +460,18 @@ public class IssueBookForm extends javax.swing.JFrame {
         // Seatch member by id and display his/her full name
 
         //get the member id
-        int member_id = (int)jSpinner_MemberID.getValue();
+        int member_id = (int) jSpinner_MemberID.getValue();
 
         try {
             //get the member by id
             My_Classes.Member selectedMember = member.getMemberById(member_id);
-            if(selectedMember != null){ //if this member exist
+            if (selectedMember != null) { //if this member exist
                 //display this member full name
                 jLabel_MemberFullName_.setText(selectedMember.getFirstName() + " " + selectedMember.getLastName());
                 //set the member_exist to true
                 member_Exist = true;
-            }
-            else{  //if this member doesn't exist
-                JOptionPane.showMessageDialog(null, "This member doesn't exist","Member not found", 2);
+            } else {  //if this member doesn't exist
+                JOptionPane.showMessageDialog(null, "This member doesn't exist", "Member not found", 2);
                 jLabel_MemberFullName_.setText("Member Full-Name");
 
                 member_Exist = false;
@@ -486,7 +484,7 @@ public class IssueBookForm extends javax.swing.JFrame {
 
     private void jLabel_BookName_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookName_MouseClicked
         //Display the book into card
-        int book_id = (int)jSpinner_BookID.getValue();
+        int book_id = (int) jSpinner_BookID.getValue();
         BookInfoCardForm bookcardF = new BookInfoCardForm(book_id);
         bookcardF.setVisible(true);
 
@@ -494,7 +492,7 @@ public class IssueBookForm extends javax.swing.JFrame {
 
     private void jLabel_MemberFullName_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MemberFullName_MouseClicked
         // Display the member into card
-        int member_id = (int)jSpinner_MemberID.getValue();
+        int member_id = (int) jSpinner_MemberID.getValue();
         MemberInfoCardForm membercardF = new MemberInfoCardForm(member_id);
         membercardF.setVisible(true);
 
@@ -502,7 +500,7 @@ public class IssueBookForm extends javax.swing.JFrame {
 
     private void jLabel_BookName_MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookName_MouseEntered
         //add a border in the bottom of the book name jLabel
-        setBorderToJLabel(jLabel_BookName_, new Color(51,102,255));
+        setBorderToJLabel(jLabel_BookName_, new Color(51, 102, 255));
     }//GEN-LAST:event_jLabel_BookName_MouseEntered
 
     private void jLabel_BookName_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookName_MouseExited
@@ -512,7 +510,7 @@ public class IssueBookForm extends javax.swing.JFrame {
 
     private void jLabel_MemberFullName_MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MemberFullName_MouseEntered
         //add a border in the bottom of the member full name jLabel
-        setBorderToJLabel(jLabel_MemberFullName_, new Color(51,102,255));
+        setBorderToJLabel(jLabel_MemberFullName_, new Color(51, 102, 255));
     }//GEN-LAST:event_jLabel_MemberFullName_MouseEntered
 
     private void jLabel_MemberFullName_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MemberFullName_MouseExited
@@ -521,25 +519,25 @@ public class IssueBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel_MemberFullName_MouseExited
 
     //Create a little function to set border
-    public void setBorderToJLabel(JLabel label, Color color){
-        Border border = BorderFactory.createMatteBorder(0,0,1,0,color);
+    public void setBorderToJLabel(JLabel label, Color color) {
+        Border border = BorderFactory.createMatteBorder(0, 0, 1, 0, color);
         label.setBorder(border);
     }
 
     // create a function to verify the required fields
-    public boolean verif(){
+    public boolean verif() {
         return true;
     }
 
-  public static void main(String args[]) {
-      /* Create and display the form */
-      java.awt.EventQueue.invokeLater(new Runnable() {
-           @Override
+    public static void main(String args[]) {
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-             new BorrowBookForm().setVisible(true);
+                new IssueBookForm().setVisible(true);
             }
-       });
-   }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Borrow_;

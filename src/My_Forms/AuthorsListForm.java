@@ -1,6 +1,7 @@
 package My_Forms;
 
 import My_Forms.EditBookForm;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -10,31 +11,31 @@ import javax.swing.table.DefaultTableModel;
 public class AuthorsListForm extends javax.swing.JFrame {
 
     //Creates Author list form
-     
+
     My_Classes.Author author = new My_Classes.Author();
     public String formType = "";
-    
+
     public AuthorsListForm() {
         initComponents();
-        
+
         // center the form
         this.setLocationRelativeTo(null);
-        
+
         // add a gray border to the panel
-        Border panelHeaderBorder = BorderFactory.createMatteBorder(3,3,3,3,new Color(1, 50, 67));
+        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(1, 50, 67));
         jPanel1.setBorder(panelHeaderBorder);
-        
+
         // display image in the top
         My_Classes.Func_Class func = new My_Classes.Func_Class();
-        func.displayImage(75, 60,null, "/Images/notepad.png", jLabel_FormTitle);
-        
+        func.displayImage(75, 60, null, "/Images/notepad.png", jLabel_FormTitle);
+
         // customize the jtable
         func.customTable(jTable_Authors_);
-        
+
         // customize the jtable header row
         func.customTableHeader(jTable_Authors_, new Color(34, 167, 240), 16);
-        
-        
+
+
         // populate Jtable With Author
         populateJtableWithAuthors();
     }
@@ -76,14 +77,14 @@ public class AuthorsListForm extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel_CloseForm_.setBackground(new java.awt.Color(1, 50, 67));
@@ -101,12 +102,12 @@ public class AuthorsListForm extends javax.swing.JFrame {
 
         jTable_Authors_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable_Authors_.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][]{
 
-            },
-            new String [] {
+                },
+                new String[]{
 
-            }
+                }
         ));
         jTable_Authors_.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -127,28 +128,28 @@ public class AuthorsListForm extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton_Select_Author, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButton_Select_Author, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_Select_Author, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_Select_Author, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                                .addContainerGap())
         );
 
         pack();
@@ -160,57 +161,55 @@ public class AuthorsListForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel_CloseForm_MouseClicked
 
     private void jTable_Authors_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Authors_MouseClicked
-        
-        
+
+
     }//GEN-LAST:event_jTable_Authors_MouseClicked
-    
+
     // create a function to populate the jtable with author
-    public void populateJtableWithAuthors()
-    {
+    public void populateJtableWithAuthors() {
 
         ArrayList<My_Classes.Author> authorsList = author.authorsList();
-        
+
         // jTable columns
         String[] colNames = {"ID", "F-Name", "L-Name", "Expertise", "About"};
-        
+
         // row
         Object[][] rows = new Object[authorsList.size()][colNames.length];
-        
-        for(int i = 0; i < authorsList.size(); i++)
-        {
+
+        for (int i = 0; i < authorsList.size(); i++) {
             rows[i][0] = authorsList.get(i).getId();
             rows[i][1] = authorsList.get(i).getFirstName();
             rows[i][2] = authorsList.get(i).getLastName();
             rows[i][3] = authorsList.get(i).getField_Of_Expertise();
             rows[i][4] = authorsList.get(i).getAbout();
         }
-        
+
         DefaultTableModel model = new DefaultTableModel(rows, colNames);
         jTable_Authors_.setModel(model);
-        
+
     }
-    
+
     private void jTextField_AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_AboutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_AboutActionPerformed
 
     private void jButton_Select_AuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Select_AuthorActionPerformed
         // display the selected author
-        
+
         // get the selected row index
         int index = jTable_Authors_.getSelectedRow();
-        
+
         // get values
         int id = Integer.parseInt(jTable_Authors_.getValueAt(index, 0).toString());
         String firstName = jTable_Authors_.getValueAt(index, 1).toString();
         String lastName = jTable_Authors_.getValueAt(index, 2).toString();
-        String fullName = firstName +" "+ lastName;
-        
-        if(formType.equals("edit")) // if this form is called from the edit book form
+        String fullName = firstName + " " + lastName;
+
+        if (formType.equals("edit")) // if this form is called from the edit book form
             EditBookForm.displayAuthorData(id, fullName);
         else
             AddBookForm.displayAuthorData(id, fullName);
-        
+
         //close this form
         this.dispose();
     }//GEN-LAST:event_jButton_Select_AuthorActionPerformed

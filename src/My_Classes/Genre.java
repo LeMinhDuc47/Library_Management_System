@@ -46,7 +46,9 @@ public class Genre {
     public void setName(String name) {
         this.name = name;
     }
-Classes.Func_Class func = new Classes.Func_Class();
+
+    My_Classes.Func_Class func = new My_Classes.Func_Class();
+
     public void addGenre(String name) {
         String insertQuery = "INSERT INTO `book_genres`(`name`) VALUES (?)";
         try {
@@ -111,38 +113,35 @@ Classes.Func_Class func = new Classes.Func_Class();
         }
         return gList;
     }
-        public HashMap<String, Integer> getGenresMap()
-    {
-        HashMap<String, Integer> map =new HashMap<>();
+
+    public HashMap<String, Integer> getGenresMap() {
+        HashMap<String, Integer> map = new HashMap<>();
         try {
-            ResultSet rs = func.getData("SELECT * FROM `book_genres`");          
-            Classes.Genre genre;
-            
-            while(rs.next())
-            {
-                genre = new Classes.Genre(rs.getInt("id"), rs.getString("name"));
+            ResultSet rs = func.getData("SELECT * FROM `book_genres`");
+            My_Classes.Genre genre;
+
+            while (rs.next()) {
+                genre = new My_Classes.Genre(rs.getInt("id"), rs.getString("name"));
                 map.put(genre.getName(), genre.getId());
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Classes.Genre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(My_Classes.Genre.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return map;  
+        return map;
     }
-    
+
     // create a function to get genre by id
-    public Classes.Genre getGenreById(Integer id)
-    {
-        ResultSet rs = func.getData("SELECT * FROM `book_genres` where id = "+id);                   
-        
-        Classes.Genre genre = null;
-            
+    public My_Classes.Genre getGenreById(Integer id) {
+        ResultSet rs = func.getData("SELECT * FROM `book_genres` where id = " + id);
+
+        My_Classes.Genre genre = null;
+
         try {
-            if(rs.next())
-            {
-                genre = new Classes.Genre(rs.getInt("id"), rs.getString("name"));
+            if (rs.next()) {
+                genre = new My_Classes.Genre(rs.getInt("id"), rs.getString("name"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Classes.Genre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(My_Classes.Genre.class.getName()).log(Level.SEVERE, null, ex);
         }
         return genre;
     }

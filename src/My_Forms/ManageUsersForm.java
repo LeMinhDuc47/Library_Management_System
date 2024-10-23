@@ -11,29 +11,29 @@ import javax.swing.table.DefaultTableModel;
 public class ManageUsersForm extends javax.swing.JFrame {
 
     //Creates Manage User form
-     
-    Classes.Users user = new Classes.Users();
-    
+
+    My_Classes.Users user = new My_Classes.Users();
+
     public ManageUsersForm() {
         initComponents();
-        
+
         // center the form
         this.setLocationRelativeTo(null);
-        
+
         // add border to the panel
-        Border panelHeaderBorder = BorderFactory.createMatteBorder(3,3,3,3,new Color(242,217,132));
+        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(242, 217, 132));
         jPanel1.setBorder(panelHeaderBorder);
-        
+
         // display image in the top
-        Classes.Func_Class func = new Classes.Func_Class();
-        func.displayImage(75, 60,null, "/Images/user.png", jLabel_FormTitle);
-        
+        My_Classes.Func_Class func = new My_Classes.Func_Class();
+        func.displayImage(75, 60, null, "/Images/user.png", jLabel_FormTitle);
+
         // customize the jtable
         func.customTable(jTable_Users_);
-        
+
         // customize the jtable header row
         func.customTableHeader(jTable_Users_, new Color(34, 167, 240), 16);
-        
+
         // hide the jlabel "empty name massage"
         // you can make the lables color white
         // so they will not push the other element down
@@ -41,7 +41,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
         jLabel_EmptyLastName_.setForeground(Color.white);
         jLabel_EmptyUserName_.setForeground(Color.white);
         jLabel_EmptyPassword_.setForeground(Color.white);
-        
+
         // populate Jtable With Users
         populateJtableWithUsers();
     }
@@ -101,14 +101,14 @@ public class ManageUsersForm extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel_CloseForm_.setBackground(new java.awt.Color(242, 217, 132));
@@ -168,12 +168,12 @@ public class ManageUsersForm extends javax.swing.JFrame {
 
         jTable_Users_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable_Users_.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][]{
 
-            },
-            new String [] {
+                },
+                new String[]{
 
-            }
+                }
         ));
         jTable_Users_.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,102 +254,102 @@ public class ManageUsersForm extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField_FirstName, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField_LastName, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField_Username, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPasswordField_1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPasswordField_2, javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(jLabel_EmptyPassword_, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)))
-                    .addComponent(jLabel6)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_EmptyUserName_)
-                            .addComponent(jLabel_EmptyLastName_)
-                            .addComponent(jLabel_EmptyFirstName_)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton_Add_, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jTextField_FirstName, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jTextField_LastName, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jTextField_Username, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jPasswordField_1, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jPasswordField_2, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(jLabel_EmptyPassword_, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)))
+                                        .addComponent(jLabel6)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel_EmptyUserName_)
+                                                        .addComponent(jLabel_EmptyLastName_)
+                                                        .addComponent(jLabel_EmptyFirstName_)))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jButton_Add_, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton_Edit_, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addGap(17, 17, 17)
+                                                                .addComponent(jCheckBox_SetAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton_Delete_, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                                .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton_Edit_, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jCheckBox_SetAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_Delete_, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_EmptyFirstName_)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_EmptyLastName_)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_EmptyUserName_)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_EmptyPassword_)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox_SetAdmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_Add_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Edit_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Delete_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 21, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel1)
+                                                        .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField_FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel_EmptyFirstName_)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel_EmptyLastName_)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel_EmptyUserName_)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jPasswordField_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel_EmptyPassword_)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jPasswordField_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jCheckBox_SetAdmin)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jButton_Add_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jButton_Edit_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jButton_Delete_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         pack();
@@ -368,48 +368,39 @@ public class ManageUsersForm extends javax.swing.JFrame {
         String password_1 = String.valueOf(jPasswordField_1.getPassword());
         String password_2 = String.valueOf(jPasswordField_2.getPassword());
         String userType = "user";
-        
-        if(jCheckBox_SetAdmin.isSelected()) 
-        {
+
+        if (jCheckBox_SetAdmin.isSelected()) {
             userType = "admin";
         }
-        
+
         // check if the text fields are empty
-        if(fname.trim().isEmpty()) // check the first name
+        if (fname.trim().isEmpty()) // check the first name
         {
             jLabel_EmptyFirstName_.setForeground(Color.red);
-        }
-        else if(lname.trim().isEmpty()) // check the last name
+        } else if (lname.trim().isEmpty()) // check the last name
         {
             jLabel_EmptyLastName_.setForeground(Color.red);
-        }
-        else if(username.trim().isEmpty()) // check the username
+        } else if (username.trim().isEmpty()) // check the username
         {
             //jLabel_EmptyUserName_.setVisible(true);
             jLabel_EmptyUserName_.setForeground(Color.red);
-        }
-        else if(password_1.trim().isEmpty()) // check the password
+        } else if (password_1.trim().isEmpty()) // check the password
         {
             //jLabel_EmptyPassword_.setVisible(true);
             jLabel_EmptyPassword_.setForeground(Color.red);
-        }
-        else if(!password_1.equals(password_2)) // check the password_1 doesn't equal the password_2
+        } else if (!password_1.equals(password_2)) // check the password_1 doesn't equal the password_2
         {
-            JOptionPane.showMessageDialog(null, "Retype The Correct Password","password error", 0);          
+            JOptionPane.showMessageDialog(null, "Retype The Correct Password", "password error", 0);
         }
-        
+
         // we need to check if this username already exists
-        else if(user.checkUsernameExists(0, username))
-        {
-            JOptionPane.showMessageDialog(null, "This Username Already Exists Try Another One","Username Error", 0);
-        }
-        
-        else
-        {
+        else if (user.checkUsernameExists(0, username)) {
+            JOptionPane.showMessageDialog(null, "This Username Already Exists Try Another One", "Username Error", 0);
+        } else {
             user.addUser(fname, lname, username, password_1, userType);
             // refresh the Jtable Users
             populateJtableWithUsers();
-            
+
             // clear text form the teaxtfields
             jTextField_ID.setText("");
             jTextField_FirstName.setText("");
@@ -418,7 +409,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
             jPasswordField_1.setText("");
             jPasswordField_2.setText("");
             jCheckBox_SetAdmin.setSelected(false);
-            
+
             //hide the jlabel
             hideLabels();
         }
@@ -426,63 +417,51 @@ public class ManageUsersForm extends javax.swing.JFrame {
 
     private void jButton_Edit_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Edit_ActionPerformed
         // edit user info
-        
+
         String fname = jTextField_FirstName.getText();
         String lname = jTextField_LastName.getText();
         String username = jTextField_Username.getText();
         String password_1 = String.valueOf(jPasswordField_1.getPassword());
         String password_2 = String.valueOf(jPasswordField_2.getPassword());
         String userType = "user";
-        
-        if(jCheckBox_SetAdmin.isSelected()) 
-        {
+
+        if (jCheckBox_SetAdmin.isSelected()) {
             userType = "admin";
         }
-        
+
         // check if the text fields are empty
-        if(fname.trim().isEmpty()) // check the first name
+        if (fname.trim().isEmpty()) // check the first name
         {
             jLabel_EmptyFirstName_.setForeground(Color.red);
-        }
-        else if(lname.trim().isEmpty()) // check the last name
+        } else if (lname.trim().isEmpty()) // check the last name
         {
             jLabel_EmptyLastName_.setForeground(Color.red);
-        }
-        else if(username.trim().isEmpty()) // check the username
+        } else if (username.trim().isEmpty()) // check the username
         {
             //jLabel_EmptyUserName_.setVisible(true);
             jLabel_EmptyUserName_.setForeground(Color.red);
-        }
-        else if(password_1.trim().isEmpty()) // check the password
+        } else if (password_1.trim().isEmpty()) // check the password
         {
             //jLabel_EmptyPassword_.setVisible(true);
             jLabel_EmptyPassword_.setForeground(Color.red);
-        }
-        else if(!password_1.equals(password_2)) // check the password_1 doesn't equal the password_2
+        } else if (!password_1.equals(password_2)) // check the password_1 doesn't equal the password_2
         {
-            JOptionPane.showMessageDialog(null, "Retype The Correct Password","password error", 0);          
-        }
-        
-        else
-        {
-            try
-            {
+            JOptionPane.showMessageDialog(null, "Retype The Correct Password", "password error", 0);
+        } else {
+            try {
                 // we need to check if this username already exists
                 // check if it's not also the current user (the user selected from jtable)
-                
+
                 int id = Integer.parseInt(jTextField_ID.getText());
-                
-                if(user.checkUsernameExists(id, username))
-                {
-                    JOptionPane.showMessageDialog(null, "This Username Already Exists Try Another One","Username Error", 0);
-                }
-                else 
-                {
+
+                if (user.checkUsernameExists(id, username)) {
+                    JOptionPane.showMessageDialog(null, "This Username Already Exists Try Another One", "Username Error", 0);
+                } else {
                     user.editUser(id, fname, lname, username, password_1, userType);
-            
+
                     // refresh the Jtable Users
                     populateJtableWithUsers();
-                    
+
                     // clear text form the teaxtfields
                     jTextField_ID.setText("");
                     jTextField_FirstName.setText("");
@@ -491,58 +470,53 @@ public class ManageUsersForm extends javax.swing.JFrame {
                     jPasswordField_1.setText("");
                     jPasswordField_2.setText("");
                     jCheckBox_SetAdmin.setSelected(false);
-                    
+
                     //hide the jlabel
                     hideLabels();
-                }  
-            }
-            catch(NumberFormatException ex)
-            {
-            JOptionPane.showMessageDialog(null, "Select The User You Want To Edit From The Table","No ID selected", 0);
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Select The User You Want To Edit From The Table", "No ID selected", 0);
             }
 
         }
-        
+
     }//GEN-LAST:event_jButton_Edit_ActionPerformed
 
     private void jButton_Delete_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Delete_ActionPerformed
         // delete the selected user
-        try
-            {
-                int id = Integer.parseInt(jTextField_ID.getText());
-                
-                // show confirmation message before removing the user
-                int confirmation = JOptionPane.showConfirmDialog(null,"Are You Sure You Want To Delete This User?","Confirmation Box",JOptionPane.YES_NO_OPTION);
-                if (confirmation==JOptionPane.YES_OPTION){
+        try {
+            int id = Integer.parseInt(jTextField_ID.getText());
+
+            // show confirmation message before removing the user
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are You Sure You Want To Delete This User?", "Confirmation Box", JOptionPane.YES_NO_OPTION);
+            if (confirmation == JOptionPane.YES_OPTION) {
                 user.removeUser(id);
-                }
-                
-                // refresh the Jtable Users
-                populateJtableWithUsers();
-                
-                // clear text form the teaxtfields
-                jTextField_ID.setText("");
-                jTextField_FirstName.setText("");
-                jTextField_LastName.setText("");
-                jTextField_Username.setText("");
-                jPasswordField_1.setText("");
-                jPasswordField_2.setText("");
-                jCheckBox_SetAdmin.setSelected(false);
-                //hide the jlabel
-                hideLabels();
             }
-            catch(NumberFormatException ex)
-            {
-                JOptionPane.showMessageDialog(null, "Invalid User ID - " + ex.getMessage(),"error", 0);
-            }
+
+            // refresh the Jtable Users
+            populateJtableWithUsers();
+
+            // clear text form the teaxtfields
+            jTextField_ID.setText("");
+            jTextField_FirstName.setText("");
+            jTextField_LastName.setText("");
+            jTextField_Username.setText("");
+            jPasswordField_1.setText("");
+            jPasswordField_2.setText("");
+            jCheckBox_SetAdmin.setSelected(false);
+            //hide the jlabel
+            hideLabels();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Invalid User ID - " + ex.getMessage(), "error", 0);
+        }
     }//GEN-LAST:event_jButton_Delete_ActionPerformed
 
     private void jTable_Users_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Users_MouseClicked
         // display the selected author
-        
+
         // get the selected row index
         int index = jTable_Users_.getSelectedRow();
-        
+
         // get values
         String id = jTable_Users_.getValueAt(index, 0).toString();
         String firstName = jTable_Users_.getValueAt(index, 1).toString();
@@ -550,7 +524,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
         String username = jTable_Users_.getValueAt(index, 3).toString();
         String password = jTable_Users_.getValueAt(index, 4).toString();
         String userType = jTable_Users_.getValueAt(index, 5).toString();
-        
+
         //show data in textfields
         jTextField_ID.setText(id);
         jTextField_FirstName.setText(firstName);
@@ -558,40 +532,36 @@ public class ManageUsersForm extends javax.swing.JFrame {
         jTextField_Username.setText(username);
         jPasswordField_1.setText(password);
         jPasswordField_2.setText(password);
-        
-        if(userType.equals("admin"))
-        {
+
+        if (userType.equals("admin")) {
             jCheckBox_SetAdmin.setSelected(true);
-        }
-        else
-        {
+        } else {
             jCheckBox_SetAdmin.setSelected(false);
         }
-        
+
     }//GEN-LAST:event_jTable_Users_MouseClicked
+
     //create method to hide all jlabels message (red message)
-    public void hideLabels()
-    {
+    public void hideLabels() {
         jLabel_EmptyFirstName_.setForeground(Color.white);
         jLabel_EmptyLastName_.setForeground(Color.white);
         jLabel_EmptyPassword_.setForeground(Color.white);
         jLabel_EmptyUserName_.setForeground(Color.white);
-        
-    }
-    // create a function to populate the jtable with user
-    public void populateJtableWithUsers()
-    {
 
-        ArrayList<Classes.Users> usersList = user.usersList();
-        
+    }
+
+    // create a function to populate the jtable with user
+    public void populateJtableWithUsers() {
+
+        ArrayList<My_Classes.Users> usersList = user.usersList();
+
         // jTable columns
         String[] colNames = {"ID", "F-Name", "L-Name", "U-Name", "Pass", "Type"};
-        
+
         // row
         Object[][] rows = new Object[usersList.size()][colNames.length];
-        
-        for(int i = 0; i < usersList.size(); i++)
-        {
+
+        for (int i = 0; i < usersList.size(); i++) {
             rows[i][0] = usersList.get(i).getId();
             rows[i][1] = usersList.get(i).getFirstname();
             rows[i][2] = usersList.get(i).getLastname();
@@ -599,12 +569,12 @@ public class ManageUsersForm extends javax.swing.JFrame {
             rows[i][4] = usersList.get(i).getPassword();
             rows[i][5] = usersList.get(i).getUserType();
         }
-        
+
         DefaultTableModel model = new DefaultTableModel(rows, colNames);
         jTable_Users_.setModel(model);
-        
+
     }
-    
+
     private void jLabel_EmptyFirstName_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyFirstName_MouseClicked
         // hide this jlabel on click
         jLabel_EmptyFirstName_.setForeground(Color.white);
@@ -642,7 +612,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
