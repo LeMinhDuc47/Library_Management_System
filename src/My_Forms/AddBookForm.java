@@ -17,7 +17,7 @@ import javax.swing.border.Border;
     //Creates Add book form
      
     My_Classes.Func_Class func = new My_Classes.Func_Class();
-    My_Classes.Genre genre = new My_Classes.Genre();
+    My_Classes.Genre genre = new My_Classes.Genre(); 
     HashMap<String,Integer> genresMap= genre.getGenresMap();
     
     String imagePath = "";
@@ -75,7 +75,7 @@ import javax.swing.border.Border;
         jButton_Select_Image = new javax.swing.JButton();
         jButton_Add_ = new javax.swing.JButton();
         jButton_Cancel_ = new javax.swing.JButton();
-        jComboBox_Genre = new javax.swing.JComboBox<>();
+        jComboBox_Genre_ = new javax.swing.JComboBox<>();
         jDateChooser_Date = new com.toedter.calendar.JDateChooser();
         jSpinner_Quantity = new javax.swing.JSpinner();
         jButton_select_author = new javax.swing.JButton();
@@ -206,7 +206,6 @@ import javax.swing.border.Border;
 
         jButton_Select_Image.setBackground(new java.awt.Color(0, 153, 102));
         jButton_Select_Image.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton_Select_Image.setForeground(new java.awt.Color(0, 0, 0));
         jButton_Select_Image.setText("Select Picture");
         jButton_Select_Image.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,10 +241,10 @@ import javax.swing.border.Border;
             }
         });
 
-        jComboBox_Genre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox_Genre.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox_Genre_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox_Genre_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox_GenreActionPerformed(evt);
+                jComboBox_Genre_ActionPerformed(evt);
             }
         });
 
@@ -317,7 +316,7 @@ import javax.swing.border.Border;
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBox_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jComboBox_Genre_, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel_Genre_ID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -381,7 +380,7 @@ import javax.swing.border.Border;
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
-                            .addComponent(jComboBox_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox_Genre_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_Genre_ID))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -405,7 +404,7 @@ import javax.swing.border.Border;
                             .addComponent(jDateChooser_Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_Select_Image)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -535,19 +534,19 @@ import javax.swing.border.Border;
         
     }//GEN-LAST:event_jButton_select_authorActionPerformed
 
-    private void jComboBox_GenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_GenreActionPerformed
+    private void jComboBox_Genre_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_Genre_ActionPerformed
         // display  the selected genre id
         // if the jcombobox is empty an error will be thrown
         // so to avoid that we will add an empty try catch just an case
         try {
-        int genreID=genresMap.get(jComboBox_Genre.getSelectedItem().toString());
+        int genreID= genresMap.get(jComboBox_Genre_.getSelectedItem().toString());
         jLabel_Genre_ID.setText(String .valueOf(genreID)); 
         } 
         catch (Exception e)
         {
             System.out.println("Error From jComboBox_Genre_ActionPerformed -"+ e.getMessage());
         }
-    }//GEN-LAST:event_jComboBox_GenreActionPerformed
+    }//GEN-LAST:event_jComboBox_Genre_ActionPerformed
 
     private void jButton_Clear_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_Clear_MouseClicked
         // TODO add your handling code here:
@@ -559,7 +558,7 @@ import javax.swing.border.Border;
         jTextField_Name.setText("");
         jTextField_Author.setText("");
         jLabel_Author_ID.setText("ID");
-        jComboBox_Genre.setSelectedIndex(0);
+        jComboBox_Genre_.setSelectedIndex(0);
         jTextField_Price.setText("");
         jTextField_Publisher.setText("");
         jTextArea_Description.setText("");
@@ -595,20 +594,15 @@ import javax.swing.border.Border;
     {
      for(String genreName : genresMap.keySet())
      {
-         jComboBox_Genre.addItem(genreName);
+         jComboBox_Genre_.addItem(genreName);
      }
     }
 
-    /*public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         
+  public static void main(String args[]) {
+        // Set the Nimbus look and feel
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -622,26 +616,21 @@ import javax.swing.border.Border;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AddBookForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form 
+        // Create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AddBookForm().setVisible(true);
             }
         });
-    }*/
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Add_;
     private javax.swing.JButton jButton_Cancel_;
     private javax.swing.JButton jButton_Clear_;
     private javax.swing.JButton jButton_Select_Image;
     private javax.swing.JButton jButton_select_author;
-    private javax.swing.JComboBox<String> jComboBox_Genre;
+    private javax.swing.JComboBox<String> jComboBox_Genre_;
     private com.toedter.calendar.JDateChooser jDateChooser_Date;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

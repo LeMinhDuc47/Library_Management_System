@@ -1,5 +1,6 @@
 package My_Forms;
 
+import Classes.Func_Class;
 import My_Forms.BookInfoCardForm;
 import Forms.MemberInfoCardForm;
 import java.awt.Color;
@@ -37,7 +38,7 @@ public class IssueBookForm extends javax.swing.JFrame {
         jPanel1.setBorder(panelHeaderBorder);
 
         // display image in the top
-        My_Classes.Func_Class func = new Classes.Func_Class();
+        Func_Class func = new Classes.Func_Class();
         func.displayImage(80, 60,null, "/Images/organizer.png", jLabel_FormTitle);
 
 
