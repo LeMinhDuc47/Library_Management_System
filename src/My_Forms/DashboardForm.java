@@ -42,7 +42,7 @@ public class DashboardForm extends javax.swing.JFrame {
     //Function to display a image
     public void displayImage() {
         //get the image
-        ImageIcon imgIco = new ImageIcon(getClass().getResource("/Images/dashboard_logo.png"));
+        ImageIcon imgIco = new ImageIcon(getClass().getResource( "/My_Images/UET-logo-full-ten.png"));
 
         //make the image fit the jlabel
         Image image = imgIco.getImage().getScaledInstance(jLabel_Dashboard_Logo.getWidth(), jLabel_Dashboard_Logo.getHeight(), Image.SCALE_SMOOTH);

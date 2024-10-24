@@ -88,7 +88,7 @@ public class Func_Class {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select Profile Picture");
 
-        fileChooser.setCurrentDirectory(new File("F:\\Image"));
+        fileChooser.setCurrentDirectory(new File("C:\\Users\\Admin\\Documents\\NetBeansProjects\\Library_Management_System\\src\\My_Images\\books"));
 
         FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image", ".png", ".jpg", ".jpeg");
         fileChooser.addChoosableFileFilter(extensionFilter);

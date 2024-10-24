@@ -6,18 +6,12 @@
 package My_Forms;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
-import My_Classes.Author;
 
 /**
  * @author Admin

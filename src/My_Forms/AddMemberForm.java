@@ -6,18 +6,11 @@
 package My_Forms;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
-import javax.swing.table.DefaultTableModel;
-
-import My_Classes.Member;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static java.util.Locale.filter;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -381,7 +373,7 @@ public class AddMemberForm extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select Profile Picture");
 
-        fileChooser.setCurrentDirectory(new File("C:\\Users\\Admin\\OneDrive\\anh\\screenshot\\screenshot"));
+        fileChooser.setCurrentDirectory(new File("C:\\Users\\Admin\\Documents\\NetBeansProjects\\Library_Management_System\\src\\My_Images\\members"));
 
         FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image", "png", "jpg", "jpeg");
         fileChooser.addChoosableFileFilter(extensionFilter);
