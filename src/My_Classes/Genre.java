@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -45,6 +46,8 @@ public class Genre {
     public void setName(String name) {
         this.name = name;
     }
+
+    My_Classes.Func_Class func = new My_Classes.Func_Class();
 
     public void addGenre(String name) {
         String insertQuery = "INSERT INTO `book_genres`(`name`) VALUES (?)";
@@ -109,5 +112,37 @@ public class Genre {
             Logger.getLogger(Genre.class.getName()).log(Level.SEVERE, null, ex);
         }
         return gList;
+    }
+
+    public HashMap<String, Integer> getGenresMap() {
+        HashMap<String, Integer> map = new HashMap<>();
+        try {
+            ResultSet rs = func.getData("SELECT * FROM `book_genres`");
+            My_Classes.Genre genre;
+
+            while (rs.next()) {
+                genre = new My_Classes.Genre(rs.getInt("id"), rs.getString("name"));
+                map.put(genre.getName(), genre.getId());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(My_Classes.Genre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return map;
+    }
+
+    // create a function to get genre by id
+    public My_Classes.Genre getGenreById(Integer id) {
+        ResultSet rs = func.getData("SELECT * FROM `book_genres` where id = " + id);
+
+        My_Classes.Genre genre = null;
+
+        try {
+            if (rs.next()) {
+                genre = new My_Classes.Genre(rs.getInt("id"), rs.getString("name"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(My_Classes.Genre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return genre;
     }
 }
