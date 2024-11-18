@@ -90,7 +90,7 @@ public class Issue_Book {
 
     //Add a new borrowing
     public void addBorrow(int _book_id, int _member_id, String _status, String _borrow_date, String _return_date, String _note) {
-        String insertQuery = "INSERT INTO `borrow_book`(`book_id`, `member_id`, `status`, `borrow_date`, `return_date`, `note`) VALUES (?,?,?,?,?,?)";
+        String insertQuery = "INSERT INTO `issue_book`(`book_id`, `member_id`, `status`, `issue_date`, `return_date`, `note`) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
 
@@ -114,7 +114,7 @@ public class Issue_Book {
 
     //Update a new borrowing
     public void updateBorrow(int _book_id, int _member_id, String _status, String _borrow_date, String _return_date, String _note) {
-        String updateQuery = "UPDATE `borrow_book` SET `status`= ?,`return_date`=?,`note`=? WHERE `book_id` =? AND `member_id`=? AND `borrow_date`=?";
+        String updateQuery = "UPDATE `issue_book` SET `status`= ?,`return_date`=?,`note`=? WHERE `book_id` =? AND `member_id`=? AND `issue_date`=?";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(updateQuery);
 
@@ -168,7 +168,7 @@ public class Issue_Book {
         PreparedStatement ps;
 
         try {
-            ps = DB.getConnection().prepareStatement("SELECT COUNT(*) as total FROM `borrow_book` WHERE book_id = ? and `status` = 'borrowed'");
+            ps = DB.getConnection().prepareStatement("SELECT COUNT(*) as total FROM `issue_book` WHERE book_id = ? and `status` = 'borrowed'");
             ps.setInt(1, _book_id);
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -187,9 +187,9 @@ public class Issue_Book {
         String query;
 
         if (_status.equals("")) {
-            query = "SELECT * FROM `borrow_book`";
+            query = "SELECT * FROM `issue_book`";
         } else {
-            query = "SELECT * FROM `borrow_book` WHERE `status` = '" + _status + "'";
+            query = "SELECT * FROM `issue_book` WHERE `status` = '" + _status + "'";
         }
 
         try {
@@ -211,7 +211,7 @@ public class Issue_Book {
     // remove borrowed book using the book_id - member_id and borrowed date
     // you can add a column id (make it as the key) to the table and delete using it
     public void removeFromBorrowedTable(int _book_id, int _member_id, String _borrowed_date) {
-        String removeQuery = "DELETE FROM `borrow_book` WHERE `book_id` =? AND `member_id`=? AND `borrow_date`=?";
+        String removeQuery = "DELETE FROM `issue_book` WHERE `book_id` =? AND `member_id`=? AND `issue_date`=?";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(removeQuery);
             ps.setInt(1, _book_id);

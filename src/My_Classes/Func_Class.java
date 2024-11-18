@@ -45,9 +45,19 @@ public class Func_Class {
 
         // make the image fit the jlabel
         Image image = imgIco.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        Image image1 = imgIco.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        Image image2 = imgIco.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        Image image3 = imgIco.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        Image image4 = imgIco.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        Image image5 = imgIco.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
 
         // set the image into the jlabel
         label.setIcon(new ImageIcon(image));
+        label.setIcon(new ImageIcon(image1));
+         label.setIcon(new ImageIcon(image2));
+          label.setIcon(new ImageIcon(image3));
+           label.setIcon(new ImageIcon(image4));
+           label.setIcon(new ImageIcon(image5));
     }
 
     public void customTable(JTable table) {
