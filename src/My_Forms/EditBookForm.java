@@ -81,16 +81,14 @@ public class EditBookForm extends javax.swing.JFrame {
         jButton_Select_Image = new javax.swing.JButton();
         jButton_Edit_ = new javax.swing.JButton();
         jButton_Cancel_ = new javax.swing.JButton();
-        jComboBox_Genre_ = new javax.swing.JComboBox<>();
         jDateChooser_Date = new com.toedter.calendar.JDateChooser();
         jSpinner_Quantity = new javax.swing.JSpinner();
         jButton_select_author = new javax.swing.JButton();
-        jLabel_Author_ID = new javax.swing.JLabel();
-        jLabel_Genre_ID = new javax.swing.JLabel();
         jButton_Clear_ = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jTextField_ID = new javax.swing.JTextField();
         jButton_Search_ = new javax.swing.JButton();
+        jTextField_Genre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -250,13 +248,6 @@ public class EditBookForm extends javax.swing.JFrame {
             }
         });
 
-        jComboBox_Genre_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox_Genre_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox_Genre_ActionPerformed(evt);
-            }
-        });
-
         jSpinner_Quantity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jButton_select_author.setText("Change Author");
@@ -267,10 +258,6 @@ public class EditBookForm extends javax.swing.JFrame {
                 jButton_select_authorActionPerformed(evt);
             }
         });
-
-        jLabel_Author_ID.setText("ID");
-
-        jLabel_Genre_ID.setText("ID");
 
         jButton_Clear_.setBackground(new java.awt.Color(204, 204, 204));
         jButton_Clear_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -301,6 +288,13 @@ public class EditBookForm extends javax.swing.JFrame {
         jButton_Search_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_Search_ActionPerformed(evt);
+            }
+        });
+
+        jTextField_Genre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_Genre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_GenreActionPerformed(evt);
             }
         });
 
@@ -343,21 +337,16 @@ public class EditBookForm extends javax.swing.JFrame {
                                 .addComponent(jButton_Search_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jTextField_Name)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextField_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 165, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jComboBox_Genre_, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel_Genre_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jTextField_Author, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel_Author_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton_select_author, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 33, Short.MAX_VALUE)))))
+                                        .addComponent(jTextField_Author, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton_select_author, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -426,13 +415,11 @@ public class EditBookForm extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(jTextField_Author, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Author_ID)
                             .addComponent(jButton_select_author, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
-                            .addComponent(jComboBox_Genre_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Genre_ID))
+                            .addComponent(jTextField_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
@@ -539,8 +526,8 @@ public class EditBookForm extends javax.swing.JFrame {
                 String publisher = jTextField_Publisher.getText();
                 String descripstion = jTextArea_Description.getText();
 
-                Integer author_id = Integer.parseInt(jLabel_Author_ID.getText());//get the author id
-                Integer genre_id = Integer.parseInt(jLabel_Genre_ID.getText());
+                String author = jTextField_Author.getText();//get the author id
+                String genre = jTextField_Genre.getText();
                 Integer quantity = Integer.parseInt(jSpinner_Quantity.getValue().toString());
 
 
@@ -553,10 +540,10 @@ public class EditBookForm extends javax.swing.JFrame {
                     // if the user want to update the cover image to
                     //get the image byte
                     byte[] img = Files.readAllBytes(path);
-                    book.editBook(id, name, author_id, genre_id, quantity, publisher, price, received_date, descripstion, img);
+                    book.editBook(id, name, author, genre, quantity, publisher, price, received_date, descripstion, img);
                 } catch (IOException ex) // if not
                 {
-                    book.editBook(id, name, author_id, genre_id, quantity, publisher, price, received_date, descripstion, null);
+                    book.editBook(id, name, author, genre, quantity, publisher, price, received_date, descripstion, null);
                 }
 
             } catch (NumberFormatException ex) {
@@ -587,18 +574,6 @@ public class EditBookForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton_select_authorActionPerformed
 
-    private void jComboBox_Genre_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_Genre_ActionPerformed
-        // display  the selected genre id
-        // if the jcombobox is empty an error will be thrown
-        // so to avoid that we will add an empty try catch just an case
-        try {
-            int genreID = genresMap.get(jComboBox_Genre_.getSelectedItem().toString());
-            jLabel_Genre_ID.setText(String.valueOf(genreID));
-        } catch (Exception e) {
-            System.out.println("Error From jComboBox_Genre_ActionPerformed -" + e.getMessage());
-        }
-    }//GEN-LAST:event_jComboBox_Genre_ActionPerformed
-
     private void jButton_Clear_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_Clear_MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_Clear_MouseClicked
@@ -609,8 +584,8 @@ public class EditBookForm extends javax.swing.JFrame {
         jTextField_ISBN.setText("");
         jTextField_Name.setText("");
         jTextField_Author.setText("");
-        jLabel_Author_ID.setText("ID");
-        jComboBox_Genre_.setSelectedIndex(0);
+        //jLabel_Author_ID.setText("ID");
+        jTextField_Genre.setText("");
         jTextField_Price.setText("");
         jTextField_Publisher.setText("");
         jTextArea_Description.setText("");
@@ -650,22 +625,21 @@ public class EditBookForm extends javax.swing.JFrame {
                 jTextField_Price.setText(Double.toString(selectedBook.getPrice()));
                 jTextArea_Description.setText(selectedBook.getDescription());
                 jSpinner_Quantity.setValue(selectedBook.getQuantity());
-                jLabel_Author_ID.setText(String.valueOf(selectedBook.getAuthor_id()));
+                jTextField_Author.setText(selectedBook.getAuthor_id());
 
                 // display the author fullname
-                String fullName = (author.getAuthorById(selectedBook.getAuthor_id())).getFirstName() + " " +
-                        (author.getAuthorById(selectedBook.getAuthor_id())).getLastName();
-                jTextField_Author.setText(fullName);
+               
+                //jTextField_Author.setText(fullName);
 
-                jLabel_Genre_ID.setText(String.valueOf(selectedBook.getGenre_id()));
+                jTextField_Genre.setText(selectedBook.getGenre_id());
 
-                // display the selected book genre in the jcombobox
-                for (Map.Entry<String, Integer> entry : genresMap.entrySet()) {
-                    if (Objects.equals(selectedBook.getGenre_id(), entry.getValue())) {
-                        jComboBox_Genre_.setSelectedItem(entry.getKey());
-                        System.out.println(entry.getKey());
-                    }
-                }
+//                // display the selected book genre in the jcombobox
+//                for (Map.Entry<String, Integer> entry : genresMap.entrySet()) {
+//                    if (Objects.equals(selectedBook.getGenre_id(), entry.getValue())) {
+//                        jTextField_Genre.setSelectedItem(entry.getKey());
+//                        System.out.println(entry.getKey());
+//                    }
+//                }
 
                 // display the date
                 Date date_receive = new SimpleDateFormat("yyyy-MM-dd").parse(selectedBook.getDate_received());
@@ -684,17 +658,21 @@ public class EditBookForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton_Search_ActionPerformed
 
+    private void jTextField_GenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_GenreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_GenreActionPerformed
+
     //display the selected author data
     public static void displayAuthorData(int id, String fullName) {
         jTextField_Author.setText(fullName);
-        jLabel_Author_ID.setText(String.valueOf(id));
+        //jLabel_Author_ID.setText(String.valueOf(id));
     }
 
     // create a function to verify the required fields
     public boolean verif() {
         if (jTextField_ISBN.getText().equals("") || jTextField_Author.getText().equals("") ||
                 jTextField_Price.getText().equals("") || jTextField_Name.getText().equals("") ||
-                jLabel_Genre_ID.getText().equals("")) {
+                jTextField_Genre.getText().equals("")) {
             return false;
         } else {
             return true;
@@ -704,7 +682,7 @@ public class EditBookForm extends javax.swing.JFrame {
     // create a function to populate the combobox with the genre name and id using hashmap
     public void fillJComboBoxWithGenres() {
         for (String genreName : genresMap.keySet()) {
-            jComboBox_Genre_.addItem(genreName);
+            //jComboBox_Genre_.addItem(genreName);
         }
     }
 
@@ -763,7 +741,6 @@ public class EditBookForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Search_;
     private javax.swing.JButton jButton_Select_Image;
     private javax.swing.JButton jButton_select_author;
-    private javax.swing.JComboBox<String> jComboBox_Genre_;
     private com.toedter.calendar.JDateChooser jDateChooser_Date;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -776,10 +753,8 @@ public class EditBookForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel9;
-    private static javax.swing.JLabel jLabel_Author_ID;
     private javax.swing.JLabel jLabel_CloseForm_;
     private javax.swing.JLabel jLabel_FormTitle;
-    private static javax.swing.JLabel jLabel_Genre_ID;
     private javax.swing.JLabel jLabel_Image;
     private javax.swing.JLabel jLabel_ImagePath;
     private javax.swing.JPanel jPanel1;
@@ -788,6 +763,7 @@ public class EditBookForm extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner_Quantity;
     private javax.swing.JTextArea jTextArea_Description;
     private static javax.swing.JTextField jTextField_Author;
+    private static javax.swing.JTextField jTextField_Genre;
     private javax.swing.JTextField jTextField_ID;
     private javax.swing.JTextField jTextField_ISBN;
     private javax.swing.JTextField jTextField_Name;

@@ -378,10 +378,10 @@ public class BookListForm extends javax.swing.JFrame {
                 jLabel_Name.setText(SelectedBook.getName());
 
                 // we need to display the author name
-                jLabel_Author.setText(author.getAuthorById(SelectedBook.getAuthor_id()).getFirstName() + " " + author.getAuthorById(SelectedBook.getAuthor_id()).getLastName());
+                jLabel_Author.setText(SelectedBook.getAuthor_id());
 
                 // we need to display the genre name
-                jLabel_Genre.setText(genre.getGenreById(SelectedBook.getGenre_id()).getName());
+                jLabel_Genre.setText(SelectedBook.getGenre_id());
 
                 jLabel_Publisher.setText(SelectedBook.getPublisher());
                 jLabel_Price.setText(String.valueOf(SelectedBook.getPrice()));

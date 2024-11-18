@@ -15,8 +15,8 @@ public class Book {
     private Integer id;
     private String isbn;
     private String name;
-    private Integer author_id;
-    private Integer genre_id;
+    private String author_id;
+    private String genre_id;
     private Integer quantity;
     private String publisher;
     private double price;
@@ -27,7 +27,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer _id, String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity,
+    public Book(Integer _id, String _isbn, String _name, String _author_id, String _genre_id, Integer _quantity,
                 String _publisher, double _price, String _date_received, String _description, byte[] _cover) {
         this.id = _id;
         this.isbn = _isbn;
@@ -54,11 +54,11 @@ public class Book {
         this.name = name;
     }
 
-    public void setAuthor_id(Integer author_id) {
+    public void setAuthor_id(String author_id) {
         this.author_id = author_id;
     }
 
-    public void setGenre_id(Integer genre_id) {
+    public void setGenre_id(String genre_id) {
         this.genre_id = genre_id;
     }
 
@@ -98,11 +98,11 @@ public class Book {
         return name;
     }
 
-    public Integer getAuthor_id() {
+    public String getAuthor_id() {
         return author_id;
     }
 
-    public Integer getGenre_id() {
+    public String getGenre_id() {
         return genre_id;
     }
 
@@ -135,7 +135,7 @@ public class Book {
     Func_Class func = new Func_Class();
 
     // insert a new book function
-    public void addBook(String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity,
+    public void addBook(String _isbn, String _name, String _author_id, String _genre_id, Integer _quantity,
                         String _publisher, double _price, String _date_received, String _description, byte[] _cover) {
         String insertQuery = "INSERT INTO `books`(`isbn`, `name`, `author_id`, `genre_id`, `quantity`, `publisher`,"
                 + " `price`, `date_received`, `description`, `cover_image`) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -144,8 +144,8 @@ public class Book {
 
             ps.setString(1, _isbn);
             ps.setString(2, _name);
-            ps.setInt(3, _author_id);
-            ps.setInt(4, _genre_id);
+            ps.setString(3, _author_id);
+            ps.setString(4, _genre_id);
             ps.setInt(5, _quantity);
             ps.setString(6, _publisher);
             ps.setDouble(7, _price);
@@ -165,7 +165,7 @@ public class Book {
     }
 
     // edit the selected book info function 
-    public void editBook(int _id, String _name, Integer _author_id, Integer _genre_id, Integer _quantity,
+    public void editBook(int _id, String _name, String _author_id, String _genre_id, Integer _quantity,
                          String _publisher, double _price, String _date_received, String _description, byte[] _cover) {
         String updateQuery = "";
         PreparedStatement ps;
@@ -179,8 +179,8 @@ public class Book {
 
                 //ps.setString(1, _isbn);
                 ps.setString(1, _name);
-                ps.setInt(2, _author_id);
-                ps.setInt(3, _genre_id);
+                ps.setString(2, _author_id);
+                ps.setString(3, _genre_id);
                 ps.setInt(4, _quantity);
                 ps.setString(5, _publisher);
                 ps.setDouble(6, _price);
@@ -195,8 +195,8 @@ public class Book {
 
                 //ps.setString(1, _isbn);
                 ps.setString(1, _name);
-                ps.setInt(2, _author_id);
-                ps.setInt(3, _genre_id);
+                ps.setString(2, _author_id);
+                ps.setString(3, _genre_id);
                 ps.setInt(4, _quantity);
                 ps.setString(5, _publisher);
                 ps.setDouble(6, _price);
@@ -260,8 +260,8 @@ public class Book {
 
         try {
             if (rs.next()) {
-                book = new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
-                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getDouble(8),
+                book = new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getInt(6), rs.getString(7), rs.getDouble(8),
                         rs.getString(9), rs.getString(10), rs.getBytes(11));
             } else {
                 return book;
@@ -285,8 +285,8 @@ public class Book {
             Book book;
 
             while (rs.next()) {
-                book = new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
-                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getDouble(8),
+                book = new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getInt(6), rs.getString(7), rs.getDouble(8),
                         rs.getString(9), rs.getString(10), rs.getBytes(11));
                 bList.add(book);
             }
@@ -304,8 +304,8 @@ public class Book {
         ResultSet rs = func.getData(query);
         if (rs.next()) {
             // return the book
-            return new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
-                    rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getDouble(8),
+            return new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                    rs.getString(5), rs.getInt(6), rs.getString(7), rs.getDouble(8),
                     rs.getString(9), rs.getString(10), rs.getBytes(11));
         } else {
             // return null

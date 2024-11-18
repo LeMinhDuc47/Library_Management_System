@@ -20,7 +20,7 @@ public class DB {
     private static String userName = "root";
     private static String dbName = "java_library_management";
     private static Integer portNumber = 3306;
-    private static String pass = "leminhduc472005";
+    private static String pass = "";
 
     public static Connection getConnection() {
         Connection connection = null;
