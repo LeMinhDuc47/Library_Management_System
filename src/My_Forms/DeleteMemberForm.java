@@ -8,8 +8,6 @@ import javax.swing.border.Border;
 public class DeleteMemberForm extends javax.swing.JFrame {
 
     //Creates Delete member form
-
-
     // create a member object
     My_Classes.Member member = new My_Classes.Member();
 
@@ -24,7 +22,6 @@ public class DeleteMemberForm extends javax.swing.JFrame {
 
         // add a gray border to the panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(1, 152, 117));
-    
 
         // display image in the top
         My_Classes.Func_Class func = new My_Classes.Func_Class();

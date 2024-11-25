@@ -9,7 +9,6 @@ import javax.swing.border.Border;
 public class DeleteBookForm extends javax.swing.JFrame {
 
     //Creates Delete Book form
-
     My_Classes.Member member = new My_Classes.Member();
     My_Classes.Func_Class func = new My_Classes.Func_Class();
     My_Classes.Genre genre = new My_Classes.Genre();

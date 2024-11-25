@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Issue_Book {
+
     private int book_id;
     private int member_id;
     private String status; //Borrowed - Returned - Lost
@@ -75,7 +76,7 @@ public class Issue_Book {
     public Issue_Book() {
 
     }
-    
+
     public Issue_Book(int _book_id, int _member_id, String _borrow_date, String _Return_date, String _note) {
         this.book_id = _book_id;
         this.member_id = _member_id;
@@ -83,7 +84,7 @@ public class Issue_Book {
         this.Return_date = _Return_date;
         this.note = _note;
     }
-    
+
     public Issue_Book(int _book_id, int _member_id, String _status, String _borrow_date, String _Return_date, String _note) {
         this.book_id = _book_id;
         this.member_id = _member_id;
@@ -99,22 +100,22 @@ public class Issue_Book {
     //Add a new borrowing
     //Add a new borrowing
     public void addBorrow(int _book_id, int _member_id, String _status, String _borrow_date, String _return_date, String _note) {
-    String insertQuery = "INSERT INTO `issue_book`(`book_id`, `member_id`, `status`, `issue_date`, `return_date`, `note`) VALUES (?,?,?,?,?,?)";
-    try {
-        PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
+        String insertQuery = "INSERT INTO `issue_book`(`book_id`, `member_id`, `status`, `issue_date`, `return_date`, `note`) VALUES (?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
 
-        ps.setInt(1, _book_id);
-        ps.setInt(2, _member_id);
-        ps.setString(3, _status);
-        ps.setString(4, _borrow_date);
-        ps.setString(5, _return_date);
-        ps.setString(6, _note);
+            ps.setInt(1, _book_id);
+            ps.setInt(2, _member_id);
+            ps.setString(3, _status);
+            ps.setString(4, _borrow_date);
+            ps.setString(5, _return_date);
+            ps.setString(6, _note);
 
-        ps.executeUpdate();
-    } catch (SQLException ex) {
-        Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-}
 
     //Update a new borrowing
     public void updateBorrow(int _book_id, int _member_id, String _status, String _borrow_date, String _return_date, String _note) {
@@ -122,14 +123,12 @@ public class Issue_Book {
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(updateQuery);
 
-
             ps.setString(1, _status);
             ps.setString(2, _return_date);
             ps.setString(3, _note);
             ps.setInt(4, _book_id);
             ps.setInt(5, _member_id);
             ps.setString(6, _borrow_date);
-
 
             if (ps.executeUpdate() != 0) {
                 JOptionPane.showMessageDialog(null, "Status Updated", "Book Borrow", 1);
@@ -140,7 +139,6 @@ public class Issue_Book {
             Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     //Check if the book is available by using the quantity from table books
     public boolean checkBookAvailability(int _book_id) {

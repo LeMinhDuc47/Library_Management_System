@@ -2,7 +2,6 @@ package My_Forms;
 
 import java.awt.Color;
 import java.awt.HeadlessException;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,37 +21,35 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-     
-    public class BorrowBookForm extends javax.swing.JFrame {
+
+public class BorrowBookForm extends javax.swing.JFrame {
 
     //Creates Borrow Book form
-        
-    My_Classes.Member member = new  My_Classes.Member();
-     My_Classes.Book book = new  My_Classes.Book();
-     My_Classes.Issue_Book borrow = new  My_Classes.Issue_Book();
-    
+    My_Classes.Member member = new My_Classes.Member();
+    My_Classes.Book book = new My_Classes.Book();
+    My_Classes.Issue_Book borrow = new My_Classes.Issue_Book();
+
     //Variables to check if book and member exist
     boolean book_Exist = false;
     boolean member_Exist = false;
-    
+
     public BorrowBookForm() {
         initComponents();
         // center the form
         this.setLocationRelativeTo(null);
-        
+
         // add border to the panel [108,122,137]
-        Border panelHeaderBorder = BorderFactory.createMatteBorder(3,3,3,3,new Color(108,122,137));
+        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(108, 122, 137));
         jPanel1.setBorder(panelHeaderBorder);
-        
+
         // display image in the top
-         My_Classes.Func_Class func = new  My_Classes.Func_Class();
-        func.displayImage(40, 40,null, "/My_Images/imageLibrary/book.png", jLabel_FormTitle);
-        
-        
+        My_Classes.Func_Class func = new My_Classes.Func_Class();
+        func.displayImage(40, 40, null, "/My_Images/imageLibrary/book.png", jLabel_FormTitle);
+
         //add a white border in the bottom of the book name and member full name jLabel
         setBorderToJLabel(jLabel_BookName_, Color.white);
         setBorderToJLabel(jLabel_MemberFullName_, Color.white);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -335,7 +332,7 @@ import java.nio.file.Path;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton_Borrow_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Cancel_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addGap(16, 16, 16))
         );
 
         jButton_search_member.getAccessibleContext().setAccessibleDescription("");
@@ -348,7 +345,9 @@ import java.nio.file.Path;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -365,91 +364,89 @@ import java.nio.file.Path;
 
     private void jButton_Borrow_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Borrow_ActionPerformed
         //Borrow a book
-    int _book_id = (int) jSpinner_BookID.getValue();
-    int _member_id = (int) jSpinner_MemberID.getValue();
-    String _note = jTextArea_Note.getText();
+        int _book_id = (int) jSpinner_BookID.getValue();
+        int _member_id = (int) jSpinner_MemberID.getValue();
+        String _note = jTextArea_Note.getText();
 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-    try {
-        String _borrow_date = dateFormat.format(jDateChooser_BorrowDate.getDate());
-        String _return_date = dateFormat.format(jDateChooser_ReturnDate.getDate());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        try {
+            String _borrow_date = dateFormat.format(jDateChooser_BorrowDate.getDate());
+            String _return_date = dateFormat.format(jDateChooser_ReturnDate.getDate());
 
-        // Before borrowing a book, we need to check if the return date is after the borrow date
-        Date borrowDate = dateFormat.parse(_borrow_date);
-        Date returnDate = dateFormat.parse(_return_date);
+            // Before borrowing a book, we need to check if the return date is after the borrow date
+            Date borrowDate = dateFormat.parse(_borrow_date);
+            Date returnDate = dateFormat.parse(_return_date);
 
-        // Check if the book and member exist
-        if (!book_Exist) { // If the book doesn't exist
-            JOptionPane.showMessageDialog(null, "You need to check if this Book exists first by clicking the Search Book button", "Check if the Book exists", 2);
-        } else if (!member_Exist) { // If the member doesn't exist
-            JOptionPane.showMessageDialog(null, "You need to check if this Member exists first by clicking the Search Member button", "Check if the Member exists", 2);
-        }
-        // Check if the book is available
-        else if (!borrow.checkBookAvailability(_book_id)) {
-            JOptionPane.showMessageDialog(null, "This book is not available right now", "Book is not available", 2);
-        } else if (returnDate.before(borrowDate)) { // If the return date is before the borrow date
-            JOptionPane.showMessageDialog(null, "The Return date must be after the Borrow date", "Wrong Return Date", 2);
-        } else {
-            borrow.addBorrow(_book_id, _member_id, "borrowed", _borrow_date, _return_date, _note);
-            // Reset fields
-            jSpinner_BookID.setValue(0);
-            jSpinner_MemberID.setValue(0);
-            jLabel_BookName_.setText("Book name");
-            jLabel_MemberFullName_.setText("Member Full-Name");
-            jLabel_Available.setText("Yes-or-No");
-            jLabel_Available.setForeground(new Color(51, 102, 255));
-            jDateChooser_BorrowDate.setDate(new Date());
-            jDateChooser_ReturnDate.setDate(new Date());
-            book_Exist = false;
-            member_Exist = false;
-
-            // Show borrow success message
-            //JOptionPane.showMessageDialog(null, "Borrow Success", "add Borrow", 1);
-
-            // Debug message to check if we reach this point
-            System.out.println("Reached QR code prompt");
-
-            // Prompt to create QR code
-            int response = JOptionPane.showConfirmDialog(null, "Do you want to create a QR code with the borrow information?", "Create QR Code", JOptionPane.YES_NO_OPTION);
-            if (response == JOptionPane.YES_OPTION) {
-                // Debug message to check if user selected YES
-                System.out.println("User selected YES for QR code");
-
-                // Generate QR code with the borrow information
-                String qrData = "Book ID: " + _book_id + "\nMember ID: " + _member_id + "\nBorrow Date: " + _borrow_date + "\nReturn Date: " + _return_date + "\nNote: " + _note;
-                String fileName = "QRcode_" + _book_id + "_" + _member_id + ".png" ;
-                try {
-                    generateQRCode(qrData, "D:/Downloads/Downloads/New WinRAR archive/Library_Management_System (demo)/src/My_Images/QRcode/" + fileName);
-                    JOptionPane.showMessageDialog(null, "QR code has been saved successfully.", "QR Code Saved", JOptionPane.INFORMATION_MESSAGE);
-                } catch (WriterException | IOException e) {
-                    JOptionPane.showMessageDialog(null, "Error generating QR code: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                }
+            // Check if the book and member exist
+            if (!book_Exist) { // If the book doesn't exist
+                JOptionPane.showMessageDialog(null, "You need to check if this Book exists first by clicking the Search Book button", "Check if the Book exists", 2);
+            } else if (!member_Exist) { // If the member doesn't exist
+                JOptionPane.showMessageDialog(null, "You need to check if this Member exists first by clicking the Search Member button", "Check if the Member exists", 2);
+            } // Check if the book is available
+            else if (!borrow.checkBookAvailability(_book_id)) {
+                JOptionPane.showMessageDialog(null, "This book is not available right now", "Book is not available", 2);
+            } else if (returnDate.before(borrowDate)) { // If the return date is before the borrow date
+                JOptionPane.showMessageDialog(null, "The Return date must be after the Borrow date", "Wrong Return Date", 2);
             } else {
-                // Debug message to check if user selected NO
-                System.out.println("User selected NO for QR code");
+                borrow.addBorrow(_book_id, _member_id, "borrowed", _borrow_date, _return_date, _note);
+                // Reset fields
+                jSpinner_BookID.setValue(0);
+                jSpinner_MemberID.setValue(0);
+                jLabel_BookName_.setText("Book name");
+                jLabel_MemberFullName_.setText("Member Full-Name");
+                jLabel_Available.setText("Yes-or-No");
+                jLabel_Available.setForeground(new Color(51, 102, 255));
+                jDateChooser_BorrowDate.setDate(new Date());
+                jDateChooser_ReturnDate.setDate(new Date());
+                book_Exist = false;
+                member_Exist = false;
+
+                // Show borrow success message
+                //JOptionPane.showMessageDialog(null, "Borrow Success", "add Borrow", 1);
+                // Debug message to check if we reach this point
+                System.out.println("Reached QR code prompt");
+
+                // Prompt to create QR code
+                int response = JOptionPane.showConfirmDialog(null, "Do you want to create a QR code with the borrow information?", "Create QR Code", JOptionPane.YES_NO_OPTION);
+                if (response == JOptionPane.YES_OPTION) {
+                    // Debug message to check if user selected YES
+                    System.out.println("User selected YES for QR code");
+
+                    // Generate QR code with the borrow information
+                    String qrData = "Book ID: " + _book_id + "\nMember ID: " + _member_id + "\nBorrow Date: " + _borrow_date + "\nReturn Date: " + _return_date + "\nNote: " + _note;
+                    String fileName = "QRcode_" + _book_id + "_" + _member_id + ".png";
+                    try {
+                        generateQRCode(qrData, "D:\\Users\\Laptop\\OneDrive\\Documents\\test\\Library_Management_System\\src\\My_Images\\QRcode\\" + fileName);
+                        JOptionPane.showMessageDialog(null, "QR code has been saved successfully.", "QR Code Saved", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (WriterException | IOException e) {
+                        JOptionPane.showMessageDialog(null, "Error generating QR code: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    // Debug message to check if user selected NO
+                    System.out.println("User selected NO for QR code");
+                }
             }
+        } catch (HeadlessException | NullPointerException | ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Select Borrow date & Return date", "Select Date", 2);
         }
-    } catch (HeadlessException | NullPointerException | ParseException ex) {
-        JOptionPane.showMessageDialog(null, "Select Borrow date & Return date", "Select Date", 2);
-    }
- 
+
     }//GEN-LAST:event_jButton_Borrow_ActionPerformed
 
-    /**
-     *
-     * @param text
-     * @param filePath
-     * @throws WriterException
-     * @throws IOException
-     */
-    public static void generateQRCode(String text, String filePath) throws WriterException, IOException {
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 350, 350);
+        /**
+         *
+         * @param text
+         * @param filePath
+         * @throws WriterException
+         * @throws IOException
+         */
+        public static void generateQRCode(String text, String filePath) throws WriterException, IOException {
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+            BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 350, 350);
 
-        Path path = FileSystems.getDefault().getPath(filePath);
-        MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
-    }   
-    
+            Path path = FileSystems.getDefault().getPath(filePath);
+            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+        }
+
     private void jButton_Cancel_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_Cancel_MouseClicked
 
     }//GEN-LAST:event_jButton_Cancel_MouseClicked
@@ -460,83 +457,80 @@ import java.nio.file.Path;
     }//GEN-LAST:event_jButton_Cancel_ActionPerformed
 
     private void jButton_search_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_search_bookActionPerformed
-        
+
         //get the book id
-        int book_id = (int)jSpinner_BookID.getValue();
-        
+        int book_id = (int) jSpinner_BookID.getValue();
+
         try {
             //get the book by id 
-             My_Classes.Book selectedBook = book.getBookById(book_id);
-            if(selectedBook != null){ //if this book exist
+            My_Classes.Book selectedBook = book.getBookById(book_id);
+            if (selectedBook != null) { //if this book exist
                 //display this book title/name
                 jLabel_BookName_.setText(selectedBook.getName());
                 //set the book_exist to true
                 book_Exist = true;
-                
+
                 //display availability
-                if(borrow.checkBookAvailability(book_id)){
+                if (borrow.checkBookAvailability(book_id)) {
                     jLabel_Available.setText("Yes");
                     jLabel_Available.setForeground(Color.green);
-                    
-                }
-                else{
+
+                } else {
                     jLabel_Available.setText("No");
                     jLabel_Available.setForeground(Color.red);
                 }
-                
-            }
-            else{  //if this book doesn't exist
-                JOptionPane.showMessageDialog(null, "This book doesn't exist","Book not found", 2);
+
+            } else {  //if this book doesn't exist
+                JOptionPane.showMessageDialog(null, "This book doesn't exist", "Book not found", 2);
                 jLabel_BookName_.setText("Book name");
                 book_Exist = false;
                 jLabel_Available.setText("Yes-or-No");
-                jLabel_Available.setForeground(new Color(51,102,255));
+                jLabel_Available.setForeground(new Color(51, 102, 255));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BorrowBookForm.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
-        
+
     }//GEN-LAST:event_jButton_search_bookActionPerformed
-    
+
     private void jButton_search_memberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_search_memberActionPerformed
         // Seatch member by id and display his/her full name
-        
+
         //get the member id
-        int member_id = (int)jSpinner_MemberID.getValue();
-        
+        int member_id = (int) jSpinner_MemberID.getValue();
+
         try {
             //get the member by id 
-             My_Classes.Member selectedMember = member.getMemberById(member_id);
-            if(selectedMember != null){ //if this member exist
+            My_Classes.Member selectedMember = member.getMemberById(member_id);
+            if (selectedMember != null) { //if this member exist
                 //display this member full name
                 jLabel_MemberFullName_.setText(selectedMember.getFirstName() + " " + selectedMember.getLastName());
                 //set the member_exist to true
                 member_Exist = true;
-            }
-            else{  //if this member doesn't exist
-                JOptionPane.showMessageDialog(null, "This member doesn't exist","Member not found", 2);
+            } else {  //if this member doesn't exist
+                JOptionPane.showMessageDialog(null, "This member doesn't exist", "Member not found", 2);
                 jLabel_MemberFullName_.setText("Member Full-Name");
-                       
+
                 member_Exist = false;
             }
         } catch (SQLException ex) {
             Logger.getLogger(BorrowBookForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jButton_search_memberActionPerformed
 
     private void jLabel_BookName_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookName_MouseClicked
         //Display the book into card
-        int book_id = (int)jSpinner_BookID.getValue();
+        int book_id = (int) jSpinner_BookID.getValue();
         BookInfoCardForm bookcardF = new BookInfoCardForm(book_id);
         bookcardF.setVisible(true);
-        
+
     }//GEN-LAST:event_jLabel_BookName_MouseClicked
 
     private void jLabel_MemberFullName_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MemberFullName_MouseClicked
         // Display the member into card
-        int member_id = (int)jSpinner_MemberID.getValue();
+        int member_id = (int) jSpinner_MemberID.getValue();
         MemberInfoCardForm membercardF = new MemberInfoCardForm(member_id);
         membercardF.setVisible(true);
 
@@ -544,7 +538,7 @@ import java.nio.file.Path;
 
     private void jLabel_BookName_MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookName_MouseEntered
         //add a border in the bottom of the book name jLabel
-        setBorderToJLabel(jLabel_BookName_, new Color(51,102,255));
+        setBorderToJLabel(jLabel_BookName_, new Color(51, 102, 255));
     }//GEN-LAST:event_jLabel_BookName_MouseEntered
 
     private void jLabel_BookName_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookName_MouseExited
@@ -554,34 +548,34 @@ import java.nio.file.Path;
 
     private void jLabel_MemberFullName_MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MemberFullName_MouseEntered
         //add a border in the bottom of the member full name jLabel
-        setBorderToJLabel(jLabel_MemberFullName_, new Color(51,102,255));
+        setBorderToJLabel(jLabel_MemberFullName_, new Color(51, 102, 255));
     }//GEN-LAST:event_jLabel_MemberFullName_MouseEntered
 
     private void jLabel_MemberFullName_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MemberFullName_MouseExited
         //add a white border in the bottom of the member full name jLabel
         setBorderToJLabel(jLabel_MemberFullName_, Color.white);
     }//GEN-LAST:event_jLabel_MemberFullName_MouseExited
-    
-    //Create a little function to set border
-    public void setBorderToJLabel(JLabel label, Color color){
-        Border border = BorderFactory.createMatteBorder(0,0,1,0,color);
-        label.setBorder(border);
-    }
 
-    // create a function to verify the required fields
-    public boolean verif(){
-        return true;
-    }
-    
-    public static void main(String args[]) {
-        /* Create and display the form */
-       java.awt.EventQueue.invokeLater(new Runnable() {
-           @Override
-           public void run() {
-               new BorrowBookForm().setVisible(true);
-          }
-      });
-    }
+        //Create a little function to set border
+        public void setBorderToJLabel(JLabel label, Color color) {
+            Border border = BorderFactory.createMatteBorder(0, 0, 1, 0, color);
+            label.setBorder(border);
+        }
+
+        // create a function to verify the required fields
+        public boolean verif() {
+            return true;
+        }
+
+        public static void main(String args[]) {
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new BorrowBookForm().setVisible(true);
+                }
+            });
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Borrow_;

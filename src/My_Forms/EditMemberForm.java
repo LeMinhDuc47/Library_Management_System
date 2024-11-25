@@ -15,8 +15,6 @@ import javax.swing.border.Border;
 public class EditMemberForm extends javax.swing.JFrame {
 
     //Creates Edit Member form
-
-
     // create a member object
     My_Classes.Member member = new My_Classes.Member();
 
@@ -42,8 +40,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         // display image in the top
         //we will display the image using the path
         //so we will set the imagebyte to null
-
-        func.displayImage(50, 50, null, "/My_Images/imageLibrary/person_edit.png", jLabel_FormTitle);
+        func.displayImage(50, 40, null, "/My_Images/imageLibrary/person_edit.png", jLabel_FormTitle);
         // hide the jlabel "empty name massage"
         jLabel_EmptyFirstName_.setVisible(false);
         jLabel_EmptyLastName_.setVisible(false);
@@ -505,7 +502,6 @@ public class EditMemberForm extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "No Member With This Id Is Found", "Invalid Id", 3);
             }
-
 
         } catch (SQLException | NumberFormatException ex) {
             //Logger.getLogger(EditMemberForm.class.getName()).log(Level.SEVERE, null, ex);

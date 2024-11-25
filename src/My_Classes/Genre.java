@@ -14,11 +14,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
 /**
  * @author Admin
  */
 public class Genre {
+
     private int id;
     private String name;
 

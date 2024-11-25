@@ -7,11 +7,9 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ManageUsersForm extends javax.swing.JFrame {
 
     //Creates Manage User form
-
     My_Classes.Users user = new My_Classes.Users();
 
     public ManageUsersForm() {
@@ -390,9 +388,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
         } else if (!password_1.equals(password_2)) // check the password_1 doesn't equal the password_2
         {
             JOptionPane.showMessageDialog(null, "Retype The Correct Password", "password error", 0);
-        }
-
-        // we need to check if this username already exists
+        } // we need to check if this username already exists
         else if (user.checkUsernameExists(0, username)) {
             JOptionPane.showMessageDialog(null, "This Username Already Exists Try Another One", "Username Error", 0);
         } else {

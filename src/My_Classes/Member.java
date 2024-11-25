@@ -1,6 +1,5 @@
 package My_Classes;
 
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +9,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Member {
+
     private int id;
     private String firstName;
     private String lastName;
@@ -90,7 +90,6 @@ public class Member {
     }
 
     // function
-
     // insert a new member function
     public void addMember(String _fname, String _lname, String _phone, String _email, String _gender, byte[] _pic) {
         String insertQuery = "INSERT INTO `members`(`firstName`, `lastName`, `phone`, `email`, `gender`, `picture`) VALUES (?,?,?,?,?,?)";
@@ -192,6 +191,5 @@ public class Member {
 
         return mList;
     }
-
 
 }

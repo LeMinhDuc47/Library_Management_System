@@ -8,8 +8,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
@@ -17,7 +16,6 @@ import javax.swing.border.Border;
 public class EditBookForm extends javax.swing.JFrame {
 
     //Creates Edit book form
-
     My_Classes.Book book = new My_Classes.Book();
     My_Classes.Member member = new My_Classes.Member();
     My_Classes.Author author = new My_Classes.Author();
@@ -45,9 +43,6 @@ public class EditBookForm extends javax.swing.JFrame {
         // add a black border to the jlabelImage
         Border JlabelImageBorder = BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(0, 0, 0));
         jLabel_Image.setBorder(JlabelImageBorder);
-
-        // add a default image to the jlabel
-        // func.displayImage(112, 93,null, "/Images/blank-profile.png", jLabel_Image);
 
     }
 
@@ -340,13 +335,10 @@ public class EditBookForm extends javax.swing.JFrame {
                                 .addComponent(jTextField_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 165, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField_Author, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton_select_author, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jTextField_Author, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton_select_author, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -441,7 +433,7 @@ public class EditBookForm extends javax.swing.JFrame {
                     .addComponent(jButton_Clear_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Edit_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Cancel_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -452,7 +444,9 @@ public class EditBookForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
@@ -509,16 +503,14 @@ public class EditBookForm extends javax.swing.JFrame {
 
         if (!verif()) {
             JOptionPane.showMessageDialog(null, "one or more fields are empty", "Empty Data", 2);
-        }
-      /*
+        } /*
       // we will not check if the isbn already exists
       // because we will not edit it
       else if(book.isISBNexists(isbn))
       {
           JOptionPane.showMessageDialog(null, "This ISBN already exists", "Empty DataWrong ISBN", 2);
       }
-      */
-        else {
+         */ else {
             try {
                 //get value
                 int id = Integer.parseInt(jTextField_ID.getText());
@@ -529,7 +521,6 @@ public class EditBookForm extends javax.swing.JFrame {
                 String author = jTextField_Author.getText();//get the author id
                 String genre = jTextField_Genre.getText();
                 Integer quantity = Integer.parseInt(jSpinner_Quantity.getValue().toString());
-
 
                 Double price = Double.parseDouble(jTextField_Price.getText());
                 SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
@@ -628,9 +619,7 @@ public class EditBookForm extends javax.swing.JFrame {
                 jTextField_Author.setText(selectedBook.getAuthor_id());
 
                 // display the author fullname
-               
                 //jTextField_Author.setText(fullName);
-
                 jTextField_Genre.setText(selectedBook.getGenre_id());
 
 //                // display the selected book genre in the jcombobox
@@ -640,7 +629,6 @@ public class EditBookForm extends javax.swing.JFrame {
 //                        System.out.println(entry.getKey());
 //                    }
 //                }
-
                 // display the date
                 Date date_receive = new SimpleDateFormat("yyyy-MM-dd").parse(selectedBook.getDate_received());
                 jDateChooser_Date.setDate(date_receive);
@@ -670,9 +658,9 @@ public class EditBookForm extends javax.swing.JFrame {
 
     // create a function to verify the required fields
     public boolean verif() {
-        if (jTextField_ISBN.getText().equals("") || jTextField_Author.getText().equals("") ||
-                jTextField_Price.getText().equals("") || jTextField_Name.getText().equals("") ||
-                jTextField_Genre.getText().equals("")) {
+        if (jTextField_ISBN.getText().equals("") || jTextField_Author.getText().equals("")
+                || jTextField_Price.getText().equals("") || jTextField_Name.getText().equals("")
+                || jTextField_Genre.getText().equals("")) {
             return false;
         } else {
             return true;

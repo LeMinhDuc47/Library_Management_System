@@ -10,7 +10,6 @@ import java.sql.SQLException;
 public class BookInfoCardForm extends javax.swing.JFrame {
 
     //Creates Book Info Card form
-
     My_Classes.Book book = new My_Classes.Book();
     My_Classes.Func_Class func = new My_Classes.Func_Class();
     My_Classes.Author author = new My_Classes.Author();
@@ -28,8 +27,7 @@ public class BookInfoCardForm extends javax.swing.JFrame {
 
         // display image in the top
         My_Classes.Func_Class func = new My_Classes.Func_Class();
-        func.displayImage(50, 50, null, "/My_Images/book.png", jLabel_FormTitle);
-
+        func.displayImage(50, 50, null, "/My_Images/imageLibrary/book.png", jLabel_FormTitle);
 
         //add a black border to the jlabelImage
         Border JlabelImageBorder = BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(0, 0, 0));
@@ -59,7 +57,6 @@ public class BookInfoCardForm extends javax.swing.JFrame {
                 jLabel_Quantity.setText(String.valueOf(SelectedBook.getQuantity()));
                 jLabel_Date_Rcv.setText(SelectedBook.getDate_received());
                 jTextArea_Description.setText(SelectedBook.getDescription());
-
 
                 //display the book cover image
                 byte[] image = SelectedBook.getCover();
@@ -169,6 +166,8 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         jTextArea_Description.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextArea_Description.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea_Description);
+        jTextArea_Description.setLineWrap(true);
+        jTextArea_Description.setWrapStyleWord(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -246,12 +245,11 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel_CloseForm_MouseClicked
 
-
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                     //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
@@ -267,7 +265,7 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -308,6 +306,3 @@ public class BookInfoCardForm extends javax.swing.JFrame {
     // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     //}
 }
-
-
-

@@ -15,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 public class MemberListForm extends javax.swing.JFrame {
 
     //Creates new form MemberListForm
-
     My_Classes.Member member = new My_Classes.Member();
     My_Classes.Func_Class func = new My_Classes.Func_Class();
 
@@ -162,8 +161,8 @@ public class MemberListForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jLabel_CloseForm_, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -217,7 +216,7 @@ public class MemberListForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +265,6 @@ public class MemberListForm extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "No Member With This Id Is Found", "Invalid Id", 3);
             }
-
 
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(EditMemberForm.class.getName()).log(Level.SEVERE, null, ex);

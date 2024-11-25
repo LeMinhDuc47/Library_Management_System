@@ -28,7 +28,7 @@ public class Book {
     }
 
     public Book(Integer _id, String _isbn, String _name, String _author_id, String _genre_id, Integer _quantity,
-                String _publisher, double _price, String _date_received, String _description, byte[] _cover) {
+            String _publisher, double _price, String _date_received, String _description, byte[] _cover) {
         this.id = _id;
         this.isbn = _isbn;
         this.name = _name;
@@ -131,12 +131,11 @@ public class Book {
     }
 
     //function
-
     Func_Class func = new Func_Class();
 
     // insert a new book function
     public void addBook(String _isbn, String _name, String _author_id, String _genre_id, Integer _quantity,
-                        String _publisher, double _price, String _date_received, String _description, byte[] _cover) {
+            String _publisher, double _price, String _date_received, String _description, byte[] _cover) {
         String insertQuery = "INSERT INTO `books`(`isbn`, `name`, `author_id`, `genre_id`, `quantity`, `publisher`,"
                 + " `price`, `date_received`, `description`, `cover_image`) VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
@@ -153,7 +152,6 @@ public class Book {
             ps.setString(9, _description);
             ps.setBytes(10, _cover);
 
-
             if (ps.executeUpdate() != 0) {
                 JOptionPane.showMessageDialog(null, "Book Added", "add Book", 1);
             } else {
@@ -166,7 +164,7 @@ public class Book {
 
     // edit the selected book info function 
     public void editBook(int _id, String _name, String _author_id, String _genre_id, Integer _quantity,
-                         String _publisher, double _price, String _date_received, String _description, byte[] _cover) {
+            String _publisher, double _price, String _date_received, String _description, byte[] _cover) {
         String updateQuery = "";
         PreparedStatement ps;
 
@@ -206,7 +204,6 @@ public class Book {
                 ps.setInt(9, _id);
             }
 
-
             if (ps.executeUpdate() != 0) {
                 JOptionPane.showMessageDialog(null, "Book Edited", "edit Book", 1);
             } else {
@@ -216,7 +213,6 @@ public class Book {
             Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     // remove book by id function
     public void removeBook(int _id) {
@@ -234,7 +230,6 @@ public class Book {
             Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     // create a function to check if the isbn already exists
     public boolean isISBNexists(String _isbn) {

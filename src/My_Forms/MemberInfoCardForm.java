@@ -1,6 +1,5 @@
 package My_Forms;
 
-
 import java.awt.Color;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -196,7 +195,6 @@ public class MemberInfoCardForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel_CloseForm_MouseClicked
 
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -278,6 +276,3 @@ public class MemberInfoCardForm extends javax.swing.JFrame {
     // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     //}
 }
-
-
-
