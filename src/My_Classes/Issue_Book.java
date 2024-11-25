@@ -75,7 +75,15 @@ public class Issue_Book {
     public Issue_Book() {
 
     }
-
+    
+    public Issue_Book(int _book_id, int _member_id, String _borrow_date, String _Return_date, String _note) {
+        this.book_id = _book_id;
+        this.member_id = _member_id;
+        this.borrow_date = _borrow_date;
+        this.Return_date = _Return_date;
+        this.note = _note;
+    }
+    
     public Issue_Book(int _book_id, int _member_id, String _status, String _borrow_date, String _Return_date, String _note) {
         this.book_id = _book_id;
         this.member_id = _member_id;
@@ -89,28 +97,24 @@ public class Issue_Book {
     Func_Class func = new Func_Class();
 
     //Add a new borrowing
+    //Add a new borrowing
     public void addBorrow(int _book_id, int _member_id, String _status, String _borrow_date, String _return_date, String _note) {
-        String insertQuery = "INSERT INTO `issue_book`(`book_id`, `member_id`, `status`, `issue_date`, `return_date`, `note`) VALUES (?,?,?,?,?,?)";
-        try {
-            PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
+    String insertQuery = "INSERT INTO `issue_book`(`book_id`, `member_id`, `status`, `issue_date`, `return_date`, `note`) VALUES (?,?,?,?,?,?)";
+    try {
+        PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
 
-            ps.setInt(1, _book_id);
-            ps.setInt(2, _member_id);
-            ps.setString(3, _status);
-            ps.setString(4, _borrow_date);
-            ps.setString(5, _return_date);
-            ps.setString(6, _note);
+        ps.setInt(1, _book_id);
+        ps.setInt(2, _member_id);
+        ps.setString(3, _status);
+        ps.setString(4, _borrow_date);
+        ps.setString(5, _return_date);
+        ps.setString(6, _note);
 
-
-            if (ps.executeUpdate() != 0) {
-                JOptionPane.showMessageDialog(null, "Borrow Success", "add Borrow", 1);
-            } else {
-                JOptionPane.showMessageDialog(null, "Borrow Not Added", "add Borrow", 2);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ps.executeUpdate();
+    } catch (SQLException ex) {
+        Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
 
     //Update a new borrowing
     public void updateBorrow(int _book_id, int _member_id, String _status, String _borrow_date, String _return_date, String _note) {

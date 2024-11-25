@@ -2,6 +2,7 @@ package My_Forms;
 
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,15 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
      
     public class BorrowBookForm extends javax.swing.JFrame {
 
@@ -355,55 +365,91 @@ import javax.swing.border.Border;
 
     private void jButton_Borrow_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Borrow_ActionPerformed
         //Borrow a book
-        int _book_id = (int) jSpinner_BookID.getValue();
-        int _member_id = (int) jSpinner_MemberID.getValue();
-        String _note = jTextArea_Note.getText();
-        
-        SimpleDateFormat dateFormat =new SimpleDateFormat("YYYY-MM-dd");
-        try{
-            String _borrow_date = dateFormat.format(jDateChooser_BorrowDate.getDate());
-            String _return_date = dateFormat.format(jDateChooser_ReturnDate.getDate());
-            
-            //before borrow a book, we need to check if the return date came the borrow date
-            Date borrowDate = dateFormat.parse(_borrow_date);
-            Date returnDate = dateFormat.parse(_return_date);
-            
-            //Check if the book and member exists
-            if(!book_Exist){ //If the book doesn't exist
-                JOptionPane.showMessageDialog(null,"You need to check if this Book exist first by clicking the Search Book button","Check if the Book exist", 2);
-            }
-            else if(!member_Exist){ //If the member doesn't exist
-                JOptionPane.showMessageDialog(null,"You need to check if this Member exist first by clicking the Search Member button","Check if the Member exist", 2);
-            }
-            //Check if the book is available
-            else if(!borrow.checkBookAvailability(_book_id)){
-               JOptionPane.showMessageDialog(null,"This book is not available right now","Book is not available", 2);
-            }
-            else if(returnDate.before(borrowDate)){ //If the borrow date is after the return date
-                JOptionPane.showMessageDialog(null,"The Return date must be after the Borrow date","Wrong Return Date", 2);
-            }
-            else{
-                borrow.addBorrow(_book_id, _member_id, "borrowed", _borrow_date, _return_date, _note);
-                //reset field
-                jSpinner_BookID.setValue(0);
-                jSpinner_MemberID.setValue(0);
-                jLabel_BookName_.setText("Book name");
-                jLabel_MemberFullName_.setText("Member Full-Name");
-                jLabel_Available.setText("Yes-or-No");
-                jLabel_Available.setForeground(new Color(51,102,255));
-                jDateChooser_BorrowDate.setDate(new Date());
-                jDateChooser_ReturnDate.setDate(new Date());
-                book_Exist = false;
-                member_Exist = false;
-            }
-            
+    int _book_id = (int) jSpinner_BookID.getValue();
+    int _member_id = (int) jSpinner_MemberID.getValue();
+    String _note = jTextArea_Note.getText();
+
+    SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+    try {
+        String _borrow_date = dateFormat.format(jDateChooser_BorrowDate.getDate());
+        String _return_date = dateFormat.format(jDateChooser_ReturnDate.getDate());
+
+        // Before borrowing a book, we need to check if the return date is after the borrow date
+        Date borrowDate = dateFormat.parse(_borrow_date);
+        Date returnDate = dateFormat.parse(_return_date);
+
+        // Check if the book and member exist
+        if (!book_Exist) { // If the book doesn't exist
+            JOptionPane.showMessageDialog(null, "You need to check if this Book exists first by clicking the Search Book button", "Check if the Book exists", 2);
+        } else if (!member_Exist) { // If the member doesn't exist
+            JOptionPane.showMessageDialog(null, "You need to check if this Member exists first by clicking the Search Member button", "Check if the Member exists", 2);
         }
-        catch (HeadlessException | NullPointerException| ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Select Borrow date & Return date","Select Date", 2);
+        // Check if the book is available
+        else if (!borrow.checkBookAvailability(_book_id)) {
+            JOptionPane.showMessageDialog(null, "This book is not available right now", "Book is not available", 2);
+        } else if (returnDate.before(borrowDate)) { // If the return date is before the borrow date
+            JOptionPane.showMessageDialog(null, "The Return date must be after the Borrow date", "Wrong Return Date", 2);
+        } else {
+            borrow.addBorrow(_book_id, _member_id, "borrowed", _borrow_date, _return_date, _note);
+            // Reset fields
+            jSpinner_BookID.setValue(0);
+            jSpinner_MemberID.setValue(0);
+            jLabel_BookName_.setText("Book name");
+            jLabel_MemberFullName_.setText("Member Full-Name");
+            jLabel_Available.setText("Yes-or-No");
+            jLabel_Available.setForeground(new Color(51, 102, 255));
+            jDateChooser_BorrowDate.setDate(new Date());
+            jDateChooser_ReturnDate.setDate(new Date());
+            book_Exist = false;
+            member_Exist = false;
+
+            // Show borrow success message
+            //JOptionPane.showMessageDialog(null, "Borrow Success", "add Borrow", 1);
+
+            // Debug message to check if we reach this point
+            System.out.println("Reached QR code prompt");
+
+            // Prompt to create QR code
+            int response = JOptionPane.showConfirmDialog(null, "Do you want to create a QR code with the borrow information?", "Create QR Code", JOptionPane.YES_NO_OPTION);
+            if (response == JOptionPane.YES_OPTION) {
+                // Debug message to check if user selected YES
+                System.out.println("User selected YES for QR code");
+
+                // Generate QR code with the borrow information
+                String qrData = "Book ID: " + _book_id + "\nMember ID: " + _member_id + "\nBorrow Date: " + _borrow_date + "\nReturn Date: " + _return_date + "\nNote: " + _note;
+                String fileName = "QRcode_" + _book_id + "_" + _member_id + ".png" ;
+                try {
+                    generateQRCode(qrData, "D:/Downloads/Downloads/New WinRAR archive/Library_Management_System (demo)/src/My_Images/QRcode/" + fileName);
+                    JOptionPane.showMessageDialog(null, "QR code has been saved successfully.", "QR Code Saved", JOptionPane.INFORMATION_MESSAGE);
+                } catch (WriterException | IOException e) {
+                    JOptionPane.showMessageDialog(null, "Error generating QR code: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                // Debug message to check if user selected NO
+                System.out.println("User selected NO for QR code");
+            }
         }
+    } catch (HeadlessException | NullPointerException | ParseException ex) {
+        JOptionPane.showMessageDialog(null, "Select Borrow date & Return date", "Select Date", 2);
+    }
  
     }//GEN-LAST:event_jButton_Borrow_ActionPerformed
 
+    /**
+     *
+     * @param text
+     * @param filePath
+     * @throws WriterException
+     * @throws IOException
+     */
+    public static void generateQRCode(String text, String filePath) throws WriterException, IOException {
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 350, 350);
+
+        Path path = FileSystems.getDefault().getPath(filePath);
+        MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+    }   
+    
     private void jButton_Cancel_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_Cancel_MouseClicked
 
     }//GEN-LAST:event_jButton_Cancel_MouseClicked

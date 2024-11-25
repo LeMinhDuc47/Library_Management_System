@@ -1,7 +1,18 @@
  package My_Forms;
 
+import My_Classes.Issue_Book;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,6 +34,7 @@ public class ReturnBookForm extends javax.swing.JFrame {
     My_Classes.Member member = new My_Classes.Member();
     My_Classes.Book book = new My_Classes.Book();
     My_Classes.Issue_Book borrow = new My_Classes.Issue_Book();
+    My_Classes.Func_Class func = new My_Classes.Func_Class();
 
     //Variables to check if book and member exist
     boolean book_Exist = false;
@@ -82,6 +95,7 @@ public class ReturnBookForm extends javax.swing.JFrame {
         jButton_Delete_ = new javax.swing.JButton();
         jDateChooser_IssueDate = new com.toedter.calendar.JDateChooser();
         jDateChooser_ReturnDate = new com.toedter.calendar.JDateChooser();
+        jButton_Scan_QR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -249,6 +263,15 @@ public class ReturnBookForm extends javax.swing.JFrame {
             }
         });
 
+        jButton_Scan_QR.setText("Scan QR");
+        jButton_Scan_QR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton_Scan_QR.setBorderPainted(false);
+        jButton_Scan_QR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_Scan_QRActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -274,12 +297,16 @@ public class ReturnBookForm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel_MemberFullName_)
-                                    .addComponent(jDateChooser_IssueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jDateChooser_IssueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSpinner_BookID, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSpinner_BookID, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton_Scan_QR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +320,7 @@ public class ReturnBookForm extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton_Return_, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                                 .addComponent(jButton_Lost_, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton_Delete_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +350,8 @@ public class ReturnBookForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jSpinner_BookID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jSpinner_BookID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Scan_QR))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -590,6 +618,60 @@ public class ReturnBookForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton_Delete_ActionPerformed
 
+    private void jButton_Scan_QRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Scan_QRActionPerformed
+        // TODO add your handling code here:
+        String path = func.selectImage();
+        try {
+            File file = new File(path);
+            String decodedText = decodeQRCode(file);
+            if (decodedText == null) {
+                System.out.println("Không tìm thấy mã QR trong hình ảnh.");
+            } else {
+                System.out.println("Nội dung mã QR: " + decodedText);
+                Issue_Book borrowInfo = parseBorrowInfo(decodedText);
+                jSpinner_BookID.setValue(borrowInfo.getBook_id());
+                jSpinner_MemberID.setValue(borrowInfo.getMember_id());
+                
+                // Chuyển đổi chuỗi ngày thành đối tượng Date
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date issueDate = dateFormat.parse(borrowInfo.getBorrow_date());
+                Date returnDate = dateFormat.parse(borrowInfo.getReturn_date());
+                jDateChooser_IssueDate.setDate(issueDate);
+                jDateChooser_ReturnDate.setDate(returnDate);
+                jTextArea_Note.setText("");
+            }
+        } catch (IOException e) {
+            System.out.println("Không thể đọc tệp hình ảnh: " + e.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(ReturnBookForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton_Scan_QRActionPerformed
+
+    public static String decodeQRCode(File qrCodeImage) throws IOException {
+        BufferedImage bufferedImage = ImageIO.read(qrCodeImage);
+        LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
+        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+        try {
+            Result result = new MultiFormatReader().decode(bitmap);
+            return result.getText();
+        } catch (NotFoundException e) {
+            System.out.println("Not found QR code");
+            return null;
+        }
+    }
+    
+    public static Issue_Book parseBorrowInfo(String qrContent) {
+        String[] lines = qrContent.split("\n");
+        int bookId = Integer.parseInt(lines[0].split(": ")[1]);
+        int memberId = Integer.parseInt(lines[1].split(": ")[1]);
+        String borrowDate = lines[2].split(": ")[1];
+        String returnDate = lines[3].split(": ")[1];
+        String note = lines.length > 4 ? lines[4].split(": ")[1] : "";
+
+        return new Issue_Book(bookId, memberId, borrowDate, returnDate, note);
+    }
+    
     //Create a little function to set border
     public void setBorderToJLabel(JLabel label, Color color) {
         Border border = BorderFactory.createMatteBorder(0, 0, 1, 0, color);
@@ -641,6 +723,7 @@ public class ReturnBookForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Delete_;
     private javax.swing.JButton jButton_Lost_;
     private javax.swing.JButton jButton_Return_;
+    private javax.swing.JButton jButton_Scan_QR;
     private javax.swing.JComboBox<String> jComboBox_Status_;
     private com.toedter.calendar.JDateChooser jDateChooser_IssueDate;
     private com.toedter.calendar.JDateChooser jDateChooser_ReturnDate;
