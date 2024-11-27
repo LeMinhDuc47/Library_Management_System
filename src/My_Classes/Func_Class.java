@@ -25,13 +25,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Admin
  */
 public class Func_Class {
+
     public void displayImage(int width, int height, byte[] imagebyte, String imagePath, JLabel label) {
         ImageIcon imgIco;
         // get the image
         if (imagebyte != null)//get image using bytes
         {
             imgIco = new ImageIcon(imagebyte);
-        } else    //get image using path
+        } else //get image using path
         {
             try {
                 //get image from the project resource
@@ -54,10 +55,10 @@ public class Func_Class {
         // set the image into the jlabel
         label.setIcon(new ImageIcon(image));
         label.setIcon(new ImageIcon(image1));
-         label.setIcon(new ImageIcon(image2));
-          label.setIcon(new ImageIcon(image3));
-           label.setIcon(new ImageIcon(image4));
-           label.setIcon(new ImageIcon(image5));
+        label.setIcon(new ImageIcon(image2));
+        label.setIcon(new ImageIcon(image3));
+        label.setIcon(new ImageIcon(image4));
+        label.setIcon(new ImageIcon(image5));
     }
 
     public void customTable(JTable table) {
@@ -98,7 +99,7 @@ public class Func_Class {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select Profile Picture");
 
-        fileChooser.setCurrentDirectory(new File("C:\\Users\\Admin\\Documents\\NetBeansProjects\\Library_Management_System\\src\\My_Images\\books"));
+        fileChooser.setCurrentDirectory(new File("D:\\Users\\Laptop\\OneDrive\\Documents\\Library_Management_System\\src\\My_Images"));
 
         FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image", ".png", ".jpg", ".jpeg");
         fileChooser.addChoosableFileFilter(extensionFilter);

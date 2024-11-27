@@ -837,15 +837,32 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel_welcome.setForeground(new java.awt.Color(255, 204, 0));
         jLabel_welcome.setText("Welcome back user");
 
-        jLabel_Home.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_Dashboard_Logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_Dashboard_LogoMouseClicked(evt);
+            }
+        });
+
+        jLabel_Home.setBackground(new java.awt.Color(1, 50, 67));
+        jLabel_Home.setOpaque(true);
+        jLabel_Home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_HomeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel_HomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel_HomeMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel_Home, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel_Home, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel_Dashboard_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -856,10 +873,11 @@ public class DashboardForm extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_Home, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel_welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel_Dashboard_Logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel_Dashboard_Logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_Home, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
 
@@ -942,6 +960,7 @@ public class DashboardForm extends javax.swing.JFrame {
         // show the delete book form
         DeleteBookForm deleteBookf = new DeleteBookForm();
         deleteBookf.setVisible(true);
+       
     }//GEN-LAST:event_jButton_Delete_BookActionPerformed
 
     private void jButton_Edit_BookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Edit_BookActionPerformed
@@ -996,6 +1015,26 @@ public class DashboardForm extends javax.swing.JFrame {
     private void jButton_GachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GachActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_GachActionPerformed
+
+    private void jLabel_HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_HomeMouseClicked
+        // TODO add your handling code here:
+        displayCount();
+         book.displayBooksCover(labels_tab);
+    }//GEN-LAST:event_jLabel_HomeMouseClicked
+
+    private void jLabel_HomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_HomeMouseEntered
+        // TODO add your handling code here:
+          jLabel_Home.setBackground(new Color(1, 50, 67, 100));
+    }//GEN-LAST:event_jLabel_HomeMouseEntered
+
+    private void jLabel_HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_HomeMouseExited
+        // TODO add your handling code here:
+        jLabel_Home.setBackground(new Color(1, 50, 67));
+    }//GEN-LAST:event_jLabel_HomeMouseExited
+
+    private void jLabel_Dashboard_LogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_Dashboard_LogoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel_Dashboard_LogoMouseClicked
 
     public static void main(String args[]) {
         try {

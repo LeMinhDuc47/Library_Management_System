@@ -1,5 +1,6 @@
 package My_Forms;
 
+import My_Classes.DragUtility;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.logging.Logger;
@@ -22,7 +23,8 @@ public class BookListForm extends javax.swing.JFrame {
         initComponents();
         // center the form
         this.setLocationRelativeTo(null);
-
+// Add movement feature
+        DragUtility.addDragFunctionality(this);
         // add border to the panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(211, 84, 0));
         jPanel1.setBorder(panelHeaderBorder);

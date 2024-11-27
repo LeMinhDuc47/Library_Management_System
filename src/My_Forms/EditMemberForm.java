@@ -1,5 +1,6 @@
 package My_Forms;
 
+import My_Classes.DragUtility;
 import My_Classes.Member;
 
 import java.awt.Color;
@@ -28,7 +29,8 @@ public class EditMemberForm extends javax.swing.JFrame {
 
         // center the form
         this.setLocationRelativeTo(null);
-
+// Add movement feature
+        DragUtility.addDragFunctionality(this);
         // add a gray border to the panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(1, 152, 117));
         jPanel1.setBorder(panelHeaderBorder);
@@ -65,7 +67,6 @@ public class EditMemberForm extends javax.swing.JFrame {
         jLabel_EmptyFirstName_ = new javax.swing.JLabel();
         jLabel_EmptyLastName_ = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField_LastName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField_Phone = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -80,6 +81,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         jButton_Search = new javax.swing.JButton();
         jTextField_Id = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jTextField_LastName = new javax.swing.JTextField();
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Add");
@@ -185,8 +187,6 @@ public class EditMemberForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel3.setText("Last Name:");
 
-        jTextField_LastName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel4.setText("Phone number:");
 
@@ -265,6 +265,13 @@ public class EditMemberForm extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel9.setText("Enter Member ID:");
 
+        jTextField_LastName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_LastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_LastNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -300,7 +307,7 @@ public class EditMemberForm extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel_EmptyLastName_))
                             .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
@@ -342,9 +349,9 @@ public class EditMemberForm extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_EmptyLastName_))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel_EmptyLastName_)
+                    .addComponent(jTextField_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -358,7 +365,6 @@ public class EditMemberForm extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox_Gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -515,6 +521,10 @@ public class EditMemberForm extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField_PhoneKeyTyped
+
+    private void jTextField_LastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_LastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_LastNameActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

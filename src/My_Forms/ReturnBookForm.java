@@ -1,5 +1,6 @@
 package My_Forms;
 
+import My_Classes.DragUtility;
 import My_Classes.Issue_Book;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
@@ -43,7 +44,8 @@ public class ReturnBookForm extends javax.swing.JFrame {
         initComponents();
         // center the form
         this.setLocationRelativeTo(null);
-
+// Add movement feature
+        DragUtility.addDragFunctionality(this);
         // add border to the panel [108,122,137]
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(108, 122, 137));
         jPanel1.setBorder(panelHeaderBorder);
@@ -444,7 +446,7 @@ public class ReturnBookForm extends javax.swing.JFrame {
         } catch (HeadlessException | NullPointerException | ParseException ex) {
             JOptionPane.showMessageDialog(null, "Select An Item From The Table", "Select Item", 2);
         }
-
+        populateJtableWithBorrowedBooks("");
     }//GEN-LAST:event_jButton_Return_ActionPerformed
 
     private void jButton_Lost_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_Lost_MouseClicked
@@ -489,6 +491,7 @@ public class ReturnBookForm extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ReturnBookForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+        populateJtableWithBorrowedBooks("");
     }//GEN-LAST:event_jButton_Lost_ActionPerformed
 
     private void jLabel_BookName_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookName_MouseClicked
@@ -613,7 +616,7 @@ public class ReturnBookForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Select The Element You Want To Delete From The Table" + ex.getMessage(), "Delete Error", 2);
         }
 
-
+        populateJtableWithBorrowedBooks("");
     }//GEN-LAST:event_jButton_Delete_ActionPerformed
 
     private void jButton_Scan_QRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Scan_QRActionPerformed

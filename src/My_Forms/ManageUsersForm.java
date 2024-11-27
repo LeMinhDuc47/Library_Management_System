@@ -1,5 +1,6 @@
 package My_Forms;
 
+import My_Classes.DragUtility;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -17,7 +18,8 @@ public class ManageUsersForm extends javax.swing.JFrame {
 
         // center the form
         this.setLocationRelativeTo(null);
-
+// Add movement feature
+        DragUtility.addDragFunctionality(this);
         // add border to the panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(242, 217, 132));
         jPanel1.setBorder(panelHeaderBorder);

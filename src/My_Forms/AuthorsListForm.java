@@ -1,6 +1,7 @@
 package My_Forms;
 
 
+import My_Classes.DragUtility;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -18,7 +19,8 @@ public class AuthorsListForm extends javax.swing.JFrame {
 
         // center the form
         this.setLocationRelativeTo(null);
-
+// Add movement feature
+        DragUtility.addDragFunctionality(this);
         // add a gray border to the panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(1, 50, 67));
         jPanel1.setBorder(panelHeaderBorder);

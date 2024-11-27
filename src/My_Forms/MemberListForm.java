@@ -1,5 +1,6 @@
 package My_Forms;
 
+import My_Classes.DragUtility;
 import My_Classes.Member;
 
 import java.sql.SQLException;
@@ -22,7 +23,8 @@ public class MemberListForm extends javax.swing.JFrame {
         initComponents();
         // center the form
         this.setLocationRelativeTo(null);
-
+// Add movement feature
+        DragUtility.addDragFunctionality(this);
         // add border to the panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(1, 152, 117));
         jPanel1.setBorder(panelHeaderBorder);

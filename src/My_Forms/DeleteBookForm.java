@@ -1,5 +1,6 @@
 package My_Forms;
 
+import My_Classes.DragUtility;
 import java.awt.Color;
 import java.util.HashMap;
 import javax.swing.BorderFactory;
@@ -7,20 +8,19 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
 public class DeleteBookForm extends javax.swing.JFrame {
-
     //Creates Delete Book form
     My_Classes.Member member = new My_Classes.Member();
     My_Classes.Func_Class func = new My_Classes.Func_Class();
     My_Classes.Genre genre = new My_Classes.Genre();
     HashMap<String, Integer> genresMap = genre.getGenresMap();
-
     String imagePath = "";
 
     public DeleteBookForm() {
         initComponents();
         // center the form
         this.setLocationRelativeTo(null);
-
+// Add movement feature
+        DragUtility.addDragFunctionality(this);
         // add border to the panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(211, 84, 0));
         jPanel1.setBorder(panelHeaderBorder);
@@ -29,6 +29,10 @@ public class DeleteBookForm extends javax.swing.JFrame {
         My_Classes.Func_Class func = new My_Classes.Func_Class();
         func.displayImage(75, 60, null, "/My_Images/imageLibrary/delete_book.png", jLabel_FormTitle);
 
+    }
+
+    DeleteBookForm(DashboardForm aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @SuppressWarnings("unchecked")
@@ -185,15 +189,16 @@ public class DeleteBookForm extends javax.swing.JFrame {
         My_Classes.Book book = new My_Classes.Book();
         Integer id = (Integer) jSpinner_ID.getValue();
 
-        try {
-            // show the  confirmation message before deleting
-            int confirmation = JOptionPane.showConfirmDialog(null, "Are You Sure You Want To Delete This Book?", "Confirmation Box", JOptionPane.YES_NO_OPTION);
-            if (confirmation == JOptionPane.YES_OPTION) {
-                book.removeBook(id);
+    try {
+        // show the  confirmation message before deleting
+        int confirmation = JOptionPane.showConfirmDialog(null, "Are You Sure You Want To Delete This Book?", "Confirmation Box", JOptionPane.YES_NO_OPTION);
+        if (confirmation == JOptionPane.YES_OPTION) {
+            book.removeBook(id);
             }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Delete Error", 2);
-        }
+        
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, ex.getMessage(), "Delete Error", 2);
+    }
 
     }//GEN-LAST:event_jButton_Remove_ActionPerformed
 
@@ -204,6 +209,8 @@ public class DeleteBookForm extends javax.swing.JFrame {
     private void jLabel_CloseForm_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CloseForm_MouseClicked
         // close the form
         this.dispose();
+
+
     }//GEN-LAST:event_jLabel_CloseForm_MouseClicked
 
     public static void main(String args[]) {

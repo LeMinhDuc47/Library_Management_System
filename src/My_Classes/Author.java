@@ -148,6 +148,7 @@ public class Author {
         return aList;
     }
 
+
     public My_Classes.Author getAuthorById(Integer id) {
         ResultSet rs = func.getData("SELECT * FROM `author` where id = " + id);
         My_Classes.Author author = null;

@@ -5,6 +5,7 @@
  */
 package My_Forms;
 
+import My_Classes.DragUtility;
 import java.awt.Color;
 
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ public class ManageGenresForm extends javax.swing.JFrame {
     public ManageGenresForm() {
         initComponents();
         this.setLocationRelativeTo(null);
+        // Add movement feature
+        DragUtility.addDragFunctionality(this);
         Border panelHeaderBorder = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray);
         jPanel1.setBorder(panelHeaderBorder);
         My_Classes.Func_Class func = new My_Classes.Func_Class();

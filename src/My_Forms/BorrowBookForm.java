@@ -1,5 +1,6 @@
 package My_Forms;
 
+import My_Classes.DragUtility;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
@@ -37,7 +38,8 @@ public class BorrowBookForm extends javax.swing.JFrame {
         initComponents();
         // center the form
         this.setLocationRelativeTo(null);
-
+// Add movement feature
+        DragUtility.addDragFunctionality(this);
         // add border to the panel [108,122,137]
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(108, 122, 137));
         jPanel1.setBorder(panelHeaderBorder);
@@ -416,7 +418,7 @@ public class BorrowBookForm extends javax.swing.JFrame {
                     String qrData = "Book ID: " + _book_id + "\nMember ID: " + _member_id + "\nBorrow Date: " + _borrow_date + "\nReturn Date: " + _return_date + "\nNote: " + _note;
                     String fileName = "QRcode_" + _book_id + "_" + _member_id + ".png";
                     try {
-                        generateQRCode(qrData, "D:\\Users\\Laptop\\OneDrive\\Documents\\test\\Library_Management_System\\src\\My_Images\\QRcode\\" + fileName);
+                        generateQRCode(qrData, "D:\\Users\\Laptop\\OneDrive\\Documents\\Library_Management_System\\src\\My_Images\\QRcode\\" + fileName);
                         JOptionPane.showMessageDialog(null, "QR code has been saved successfully.", "QR Code Saved", JOptionPane.INFORMATION_MESSAGE);
                     } catch (WriterException | IOException e) {
                         JOptionPane.showMessageDialog(null, "Error generating QR code: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
