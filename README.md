@@ -36,6 +36,7 @@ Nhóm thực hiện bài tập lớn gồm 2 thành viên:
 - Ứng dụng chắc chắn sẽ không khiến cho người dùng thấy thất vọng với những tính năng hữu ích và giao diện thân thiện với người dùng.
 
 ### *Preview*
+### ->> [Video Demo](https://drive.google.com/drive/u/0/folders/1alsuUME6gK_FE8xKpkCUTkNts91sO3hV)
 ![login](demo/login.png)
 ![home](demo/home.png)
 ![feature](demo/feature.png)
