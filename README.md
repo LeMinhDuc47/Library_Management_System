@@ -36,12 +36,25 @@ Nhóm thực hiện bài tập lớn gồm 2 thành viên:
 - Ứng dụng chắc chắn sẽ không khiến cho người dùng thấy thất vọng với những tính năng hữu ích và giao diện thân thiện với người dùng.
 
 ### *Preview*
-### ->> [Video Demo](https://drive.google.com/drive/u/0/folders/1alsuUME6gK_FE8xKpkCUTkNts91sO3hV)
+#### ->>[Video Demo](https://drive.google.com/drive/u/0/folders/1alsuUME6gK_FE8xKpkCUTkNts91sO3hV)
+
++ Login
+
 ![login](demo/login.png)
++ Dashboard
+
 ![home](demo/home.png)
++ Manage Book Generes
+
 ![feature](demo/feature.png)
-![feature](demo/feature.pngfeature_1.png)
++ Member List
+
+![feature](demo/feature_1.png)
++ Book List
+
 ![feature](demo/feature_2.png)
++ Manager User
+
 ![feature](demo/feature_3.png)
 
 ## **Setup**
